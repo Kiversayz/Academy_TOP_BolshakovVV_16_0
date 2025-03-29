@@ -9,8 +9,17 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
+from dotenv import load_dotenv
 from pathlib import Path
+
+#Загружаем данные из .env
+load_dotenv()
+SQL_LOGIN = os.getenv("MS_SQL_LOGIN")
+SQL_PASS = os.getenv("MS_SQL_PASS")
+SQL_SERVER = os.getenv("MS_SQL_SERVER")
+SQL_DB = os.getenv("MS_SQL_DB")
+SQL_DRIVER = os.getenv("MS_SQL_DRIVER")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
