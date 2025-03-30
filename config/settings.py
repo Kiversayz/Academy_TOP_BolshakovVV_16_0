@@ -19,6 +19,7 @@ SQL_LOGIN = os.getenv("MS_SQL_LOGIN")
 SQL_PASS = os.getenv("MS_SQL_PASS")
 SQL_SERVER = os.getenv("MS_SQL_SERVER")
 SQL_DB = os.getenv("MS_SQL_DB")
+SQL_DB_FIRST_CONNECTDB = os.getenv("MS_SQL_DB_FIRST_CONNECT")
 SQL_DRIVER = os.getenv("MS_SQL_DRIVER")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,7 +83,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
@@ -95,7 +95,6 @@ DATABASES = {
         }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -138,3 +137,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+""" 
+print("THIS IS THE SETTINGS FILE BEING USED!")
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # Используем SQLite для простоты
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
+
+"""
