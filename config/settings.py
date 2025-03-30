@@ -13,14 +13,14 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
-#Загружаем данные из .env
+# Загружаем данные из .env
 load_dotenv()
-SQL_LOGIN = os.getenv("MS_SQL_LOGIN")
-SQL_PASS = os.getenv("MS_SQL_PASS")
-SQL_SERVER = os.getenv("MS_SQL_SERVER")
-SQL_DB = os.getenv("MS_SQL_DB")
-SQL_DB_FIRST_CONNECTDB = os.getenv("MS_SQL_DB_FIRST_CONNECT")
-SQL_DRIVER = os.getenv("MS_SQL_DRIVER")
+USER = os.getenv("MS_SQL_LOGIN")
+PASSWORD = os.getenv("MS_SQL_PASS")
+HOST = os.getenv("MS_SQL_SERVER")
+DATABASE = os.getenv("MS_SQL_DB")
+PAD_DATABASE = os.getenv("MS_SQL_DB_FIRST_CONNECT")
+DRIVER = os.getenv("MS_SQL_DRIVER")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,12 +86,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': SQL_DB,
-        'PASSWORD': SQL_PASS,
-        'HOST': SQL_SERVER,
-        'PORT':'',
-        'OPTIONS':{
-            'driver':SQL_DRIVER
+        'NAME': DATABASE,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST,
+        'PORT': '',
+        'OPTIONS': {
+            'driver': DRIVER
         }
     }
 }

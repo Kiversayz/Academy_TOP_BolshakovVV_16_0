@@ -1,29 +1,34 @@
 from django.core.management.base import BaseCommand
 import pyodbc
-from config.settings import SQL_LOGIN, SQL_PASS, SQL_SERVER, SQL_DRIVER, SQL_DB,SQL_DB_FIRST_CONNECTDB
+from config.settings import USER, PASSWORD, HOST, DRIVER, PAD_DATABASE, DATABASE
+
 
 class Command(BaseCommand):
+    help = 'Создает базу данных, если она не существует'
+
     def handle(self, *args, **options):
-        # Формирование строки подключения
-        ConnectionString = f'''
-            DRIVER={{{SQL_DRIVER}}};
-            SERVER={SQL_SERVER};
-            DATABASE={SQL_DB};
-            UID={SQL_LOGIN};
-            PWD={SQL_PASS}
-        '''
+        # Формируем строку подключения
+        ConnectionString = f'''DRIVER={DRIVER};
+            SERVER={HOST};
+            DATABASE={PAD_DATABASE};
+            UID={USER};
+            PWD={PASSWORD}'''
 
         try:
-            # Подключение к БД
+            # Устанавливаем соединение с сервером
             conn = pyodbc.connect(ConnectionString)
-            conn.autocommit = True  # Автофикс изменений
-            
-            # Создание базы данных
-            conn.execute(f'CREATE DATABASE {SQL_DB};')
-            
+            conn.autocommit = True
+
+            # Пытаемся создать базу данных
+            conn.execute(fr'CREATE DATABASE {DATABASE};')
+
+            # Закрываем соединение
+            conn.close()
+
+            self.stdout.write(self.style.SUCCESS(f'База данных {DATABASE} успешно создана'))
         except pyodbc.ProgrammingError as ex:
-            # Вывод ошибки при создании БД
-            print(ex)
-        else:
-            # Вывод сообщения об успешном создании
-            print(f'База данных {SQL_DB} успешно создана')
+            # Обработка ошибки, например, если база данных уже существует
+            self.stdout.write(self.style.ERROR(f'Ошибка при создании базы данных: {ex}'))
+        except Exception as ex:
+            # Обработка других ошибок
+            self.stdout.write(self.style.ERROR(f'Произошла ошибка: {ex}'))
