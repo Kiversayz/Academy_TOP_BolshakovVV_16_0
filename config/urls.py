@@ -14,9 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin # type: ignore
-from django.urls import path # type: ignore
+from django.urls import include, path
+from django.contrib import admin
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Главная страница")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('cards/', include('cards.urls')),
+    path('', home, name='home'),  # Корневой URL
 ]

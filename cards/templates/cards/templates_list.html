@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список шаблонов</title>
+</head>
+<body>
+    <h1>Шаблоны карточек</h1>
+    <ul>
+        {% for template in templates %}
+            <li>{{ template.name }} (автор: {{ template.creator.username }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
