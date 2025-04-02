@@ -139,13 +139,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 """ 
-print("THIS IS THE SETTINGS FILE BEING USED!")
+#требуется  доработка
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.com' #Поменять на свой
+EMAIL_PORT = 465 #Поменять на свой
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER") #добавить в .env логин от почты
+EMAIL_HOST_PASSWORD = os.getenv('YANDEX_PASSWORD_APP') #добавить в .env пароль от почты
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # Используем SQLite для простоты
-        'NAME': BASE_DIR / "db.sqlite3",
-    }
-}
-
+EMAIL_SERVER = EMAIL_HOST_USER 
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
 """
