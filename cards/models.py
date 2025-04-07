@@ -24,16 +24,35 @@ class CardTemplate(models.Model):
     """
     Модель для создания шаблонов игровых или обучающих карточек.
     
+    Эта модель используется для определения структуры шаблонов карточек,
+    которые могут быть использованы в играх, обучающих приложениях или других целях.
+    
     Атрибуты:
-        name (str): Название шаблона.
-        creator (User): Пользователь, создавший шаблон.
-        fields (JSON): Конфигурация полей карточки.
-        created_at (datetime): Дата и время создания шаблона.
+        name (CharField): 
+            Название шаблона. Максимальная длина — 100 символов.
+            Пример: "Карточки по биологии".
+        creator (ForeignKey): 
+            Пользователь, создавший шаблон. Связь с моделью User.
+            При удалении пользователя связанные шаблоны также удаляются.
+        fields (JSONField): 
+            Конфигурация полей карточки в формате JSON.
+            Валидируется функцией `validate_fields_structure`.
+            Пример структуры:
+                {
+                    "term": {"type": "text", "label": "Термин"},
+                    "definition": {"type": "textarea", "label": "Определение"}
+                }
+        preview_image (ImageField): 
+            Превью шаблона (опционально). Загружается в директорию 'previews/'.
+        created_at (DateTimeField): 
+            Дата и время создания шаблона. Устанавливается автоматически.
     
     Методы:
-        __str__: Возвращает строковое представление шаблона.
+        __str__: 
+            Возвращает строковое представление шаблона в формате "<name> (ID: <id>)".
     
     Пример использования:
+        >>> user = User.objects.get(username="example_user")
         >>> template = CardTemplate.objects.create(
         ...     name="Карточки по биологии",
         ...     creator=user,
@@ -42,7 +61,10 @@ class CardTemplate(models.Model):
         ...         "definition": {"type": "textarea", "label": "Определение"}
         ...     }
         ... )
+        >>> print(template)
+        Карточки по биологии (ID: 1)
     """
+
     name = models.CharField(
         max_length=100,
         verbose_name="Название шаблона",
@@ -77,6 +99,13 @@ class CardTemplate(models.Model):
         """
     )
     
+    preview_image = models.ImageField(
+        upload_to='previews/',
+        verbose_name="Превью шаблона",
+        blank=True,
+        null=True
+    )
+    
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Дата создания",
@@ -105,3 +134,13 @@ class CardTemplate(models.Model):
     # def get_preview_html(self) -> str:
     #     """Генерирует HTML-превью на основе fields."""
     #     pass
+
+
+class CardInstance(models.Model):
+    template = models.ForeignKey(
+        CardTemplate, 
+        on_delete=models.CASCADE,
+        related_name="cards"
+    )
+    data = models.JSONField(verbose_name="Данные карточки")  # Пример: {"question": "Текст", "image": "previews/img1.png"}
+    created_at = models.DateTimeField(auto_now_add=True)
