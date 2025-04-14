@@ -4,21 +4,46 @@ from users.models import User
 
 def validate_fields_structure(value: dict) -> None:
     """
-    Валидатор для поля `fields`. Проверяет, что каждое поле в JSON 
-    содержит обязательные ключи 'type' и 'label'.
+    Валидатор для поля `fields`. Проверяет структуру JSON.
     
-    Args:
-        value (dict): Значение поля `fields`.
-    
-    Raises:
-        ValidationError: Если структура полей некорректна.
+    Правила:
+    1. Верхний уровень должен быть словарем.
+    2. Каждое поле должно быть словарем с ключами 'type' и 'label'.
+    3. Тип поля должен быть одним из: text, textarea, image, number.
+    4. Для типа 'select' обязательно наличие списка 'options'.
     """
     required_keys = {"type", "label"}
+    allowed_types = {"text", "textarea", "image", "number", "select"}
+
+    if not isinstance(value, dict):
+        raise ValidationError("Основная структура должна быть словарем.")
+
     for field_name, config in value.items():
+        # Проверка типа конфига
         if not isinstance(config, dict):
-            raise ValidationError(f"Поле '{field_name}' должно быть словарем")
-        if not all(key in config for key in required_keys):
-            raise ValidationError(f"Поле '{field_name}' должно содержать ключи: {required_keys}")
+            raise ValidationError(f"Поле '{field_name}' должно быть словарем.")
+        
+        # Проверка обязательных ключей
+        missing_keys = required_keys - config.keys()
+        if missing_keys:
+            raise ValidationError(
+                f"Поле '{field_name}' не содержит ключи: {missing_keys}."
+            )
+        
+        # Проверка допустимых типов
+        field_type = config.get("type")
+        if field_type not in allowed_types:
+            raise ValidationError(
+                f"Недопустимый тип '{field_type}' для поля '{field_name}'. "
+                f"Допустимые типы: {allowed_types}."
+            )
+        
+        # Дополнительные проверки для специфичных типов
+        if field_type == "select" and "options" not in config:
+            raise ValidationError(
+                f"Поле '{field_name}' типа 'select' требует ключ 'options'."
+            )
+
 
 class CardTemplate(models.Model):
     """
@@ -86,12 +111,12 @@ class CardTemplate(models.Model):
             JSON-структура с описанием полей. Пример:
             {
                 "image": {
-                    "type": "image", 
+                    "type": "image",
                     "label": "Изображение",
-                    "max_size": 1024  // в килобайтах (опционально)
+                    "max_size": 1024
                 },
                 "question": {
-                    "type": "text", 
+                    "type": "text",
                     "label": "Вопрос",
                     "max_length": 200
                 }
@@ -128,7 +153,8 @@ class CardTemplate(models.Model):
 
     def __str__(self) -> str:
         """Строковое представление для админки и API."""
-        return f"{self.name} (автор: {self.creator.username})"
+        creator_username = self.creator.username if self.creator else "Неизвестный"
+        return f"{self.name} (автор: {creator_username})"
 
     # TODO: Добавить метод для генерации превью карточки
     # def get_preview_html(self) -> str:

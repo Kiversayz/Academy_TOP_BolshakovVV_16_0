@@ -16,13 +16,37 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from cards.views import card_templates_list
 from django.http import HttpResponse
 
 def home(request):
     return HttpResponse("Главная страница")
 
+
 urlpatterns = [
+    # Административная панель Django
     path('admin/', admin.site.urls),
+
+    # Маршруты для приложения users (например, регистрация, авторизация)
+    # path('users/', include('users.urls')),
+
+    # Маршруты для приложения cards (например, работа с карточками)
     path('cards/', include('cards.urls')),
-    path('', home, name='home'),  # Корневой URL
+
+    # Маршруты для приложения export (например, экспорт данных)
+    # path('export/', include('export.urls')),
+    
+    #Маршрут для аутентификации
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    # Корневой URL - заглушка (на будущее перенаправляет на card_templates_list в cards\views.py)
+    path('', home, name='home'),
+
 ]
+
+# Обработка статических файлов и медиафайлов в режиме разработки
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

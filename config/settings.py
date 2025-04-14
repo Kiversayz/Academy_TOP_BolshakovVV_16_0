@@ -67,8 +67,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # Путь к глобальным шаблонам
+        'APP_DIRS': True, # Искать шаблоны в папке templates/ каждого приложения
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -133,12 +133,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Папка с общими статическими файлами
+
+# Media files (загруженные пользователями)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = 'home'  # После входа перенаправлять на главную
+LOGOUT_REDIRECT_URL = 'home'  # После выхода перенаправлять на главную
+
+
 """ 
 #требуется  доработка
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
