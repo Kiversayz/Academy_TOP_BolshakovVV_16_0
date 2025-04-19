@@ -1,172 +1,252 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+from django.core.validators import MinLengthValidator
 from users.models import User
+from typing import Dict, Any
 
-def validate_fields_structure(value: dict) -> None:
+class FieldType(models.TextChoices):
+    """Типы полей для шаблонов карточек."""
+    TEXT = 'text', _('Текст')
+    TEXTAREA = 'textarea', _('Многострочный текст')
+    IMAGE = 'image', _('Изображение')
+    NUMBER = 'number', _('Число')
+    SELECT = 'select', _('Выпадающий список')
+
+def validate_fields_structure(value: Dict[str, Any]) -> None:
     """
-    Валидатор для поля `fields`. Проверяет структуру JSON.
+    Валидатор структуры JSON-поля fields.
     
-    Правила:
-    1. Верхний уровень должен быть словарем.
-    2. Каждое поле должно быть словарем с ключами 'type' и 'label'.
-    3. Тип поля должен быть одним из: text, textarea, image, number.
-    4. Для типа 'select' обязательно наличие списка 'options'.
+    Args:
+        value: Словарь с конфигурацией полей
+        
+    Raises:
+        ValidationError: Если структура не соответствует требованиям
+    
+    Example:
+        {
+            "term": {
+                "type": "text", 
+                "label": "Термин",
+                "required": True
+            },
+            "image": {
+                "type": "image",
+                "label": "Изображение",
+                "max_size": 2048
+            }
+        }
     """
-    required_keys = {"type", "label"}
-    allowed_types = {"text", "textarea", "image", "number", "select"}
-
     if not isinstance(value, dict):
-        raise ValidationError("Основная структура должна быть словарем.")
+        raise ValidationError(_("Основная структура должна быть словарем."))
 
     for field_name, config in value.items():
-        # Проверка типа конфига
         if not isinstance(config, dict):
-            raise ValidationError(f"Поле '{field_name}' должно быть словарем.")
-        
-        # Проверка обязательных ключей
-        missing_keys = required_keys - config.keys()
-        if missing_keys:
             raise ValidationError(
-                f"Поле '{field_name}' не содержит ключи: {missing_keys}."
+                _("Поле '%(field)s' должно быть словарем.") % {'field': field_name}
             )
         
-        # Проверка допустимых типов
-        field_type = config.get("type")
-        if field_type not in allowed_types:
+        # Проверка обязательных полей
+        required_fields = {'type', 'label'}
+        missing_fields = required_fields - config.keys()
+        if missing_fields:
             raise ValidationError(
-                f"Недопустимый тип '{field_type}' для поля '{field_name}'. "
-                f"Допустимые типы: {allowed_types}."
+                _("Поле '%(field)s' не содержит обязательные ключи: %(missing)s") % {
+                    'field': field_name,
+                    'missing': ', '.join(missing_fields)
+                }
+            )
+        
+        # Проверка типа поля
+        field_type = config.get('type')
+        if field_type not in FieldType.values:
+            raise ValidationError(
+                _("Недопустимый тип '%(type)s' для поля '%(field)s'. Допустимые типы: %(allowed)s") % {
+                    'type': field_type,
+                    'field': field_name,
+                    'allowed': ', '.join(FieldType.values)
+                }
             )
         
         # Дополнительные проверки для специфичных типов
-        if field_type == "select" and "options" not in config:
+        if field_type == FieldType.SELECT and 'options' not in config:
             raise ValidationError(
-                f"Поле '{field_name}' типа 'select' требует ключ 'options'."
+                _("Поле '%(field)s' типа 'select' требует указания options") % {'field': field_name}
             )
 
 
 class CardTemplate(models.Model):
     """
-    Модель для создания шаблонов игровых или обучающих карточек.
+    Шаблон для создания карточек с настраиваемой структурой полей.
     
-    Эта модель используется для определения структуры шаблонов карточек,
-    которые могут быть использованы в играх, обучающих приложениях или других целях.
-    
-    Атрибуты:
-        name (CharField): 
-            Название шаблона. Максимальная длина — 100 символов.
-            Пример: "Карточки по биологии".
-        creator (ForeignKey): 
-            Пользователь, создавший шаблон. Связь с моделью User.
-            При удалении пользователя связанные шаблоны также удаляются.
-        fields (JSONField): 
-            Конфигурация полей карточки в формате JSON.
-            Валидируется функцией `validate_fields_structure`.
-            Пример структуры:
-                {
-                    "term": {"type": "text", "label": "Термин"},
-                    "definition": {"type": "textarea", "label": "Определение"}
-                }
-        preview_image (ImageField): 
-            Превью шаблона (опционально). Загружается в директорию 'previews/'.
-        created_at (DateTimeField): 
-            Дата и время создания шаблона. Устанавливается автоматически.
-    
-    Методы:
-        __str__: 
-            Возвращает строковое представление шаблона в формате "<name> (ID: <id>)".
-    
-    Пример использования:
-        >>> user = User.objects.get(username="example_user")
-        >>> template = CardTemplate.objects.create(
-        ...     name="Карточки по биологии",
-        ...     creator=user,
-        ...     fields={
-        ...         "term": {"type": "text", "label": "Термин"},
-        ...         "definition": {"type": "textarea", "label": "Определение"}
-        ...     }
-        ... )
-        >>> print(template)
-        Карточки по биологии (ID: 1)
+    Attributes:
+        name: Название шаблона (макс. 100 символов)
+        creator: Пользователь, создавший шаблон
+        fields: Конфигурация полей в JSON-формате
+        preview_image: Превью изображение шаблона
+        is_public: Флаг публичного доступа
+        description: Описание шаблона
+        is_favorite: Флаг избранного
+        editors: Пользователи с правами редактирования
     """
-
+    
     name = models.CharField(
         max_length=100,
-        verbose_name="Название шаблона",
-        help_text="Максимальная длина — 100 символов. Пример: 'Карточки для викторины'"
+        verbose_name=_("Название шаблона"),
+        help_text=_("Максимальная длина — 100 символов"),
+        validators=[MinLengthValidator(3)]
     )
     
     creator = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        verbose_name="Создатель",
+        verbose_name=_("Создатель"),
         related_name="templates",
-        help_text="Пользователь, создавший этот шаблон"
+        help_text=_("Пользователь, создавший этот шаблон")
     )
     
     fields = models.JSONField(
-        verbose_name="Поля шаблона",
+        verbose_name=_("Поля шаблона"),
         validators=[validate_fields_structure],
-        help_text="""
-            JSON-структура с описанием полей. Пример:
-            {
-                "image": {
-                    "type": "image",
-                    "label": "Изображение",
-                    "max_size": 1024
-                },
-                "question": {
-                    "type": "text",
-                    "label": "Вопрос",
-                    "max_length": 200
-                }
-            }
-        """
+        help_text=_("JSON-структура с описанием полей карточки")
     )
     
     preview_image = models.ImageField(
-        upload_to='previews/',
-        verbose_name="Превью шаблона",
+        upload_to='card_templates/previews/%Y/%m/%d/',
+        verbose_name=_("Превью шаблона"),
         blank=True,
-        null=True
+        null=True,
+        help_text=_("Изображение для предпросмотра шаблона")
+    )
+    
+    is_public = models.BooleanField(
+        default=False,
+        verbose_name=_("Публичный доступ"),
+        help_text=_("Доступен ли шаблон всем пользователям")
+    )
+    
+    description = models.TextField(
+        verbose_name=_("Описание"),
+        blank=True,
+        help_text=_("Подробное описание шаблона")
+    )
+    
+    is_favorite = models.BooleanField(
+        default=False,
+        verbose_name=_("Избранное"),
+        help_text=_("Помечен ли шаблон как избранный")
+    )
+    
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name=_("Активный"),
+        help_text=_("Активен ли шаблон (мягкое удаление)")
+    )
+    
+    editors = models.ManyToManyField(
+        User,
+        related_name="editable_templates",
+        verbose_name=_("Редакторы"),
+        blank=True,
+        help_text=_("Пользователи с правами редактирования")
     )
     
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="Дата создания",
-        help_text="Автоматически устанавливается при создании"
+        verbose_name=_("Дата создания")
+    )
+    
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Дата обновления")
     )
 
     class Meta:
-        verbose_name = "Шаблон карточки"
-        verbose_name_plural = "Шаблоны карточек"
-        ordering = ["-created_at"]  # Сортировка по убыванию даты
+        verbose_name = _("Шаблон карточки")
+        verbose_name_plural = _("Шаблоны карточек")
+        ordering = ["-created_at"]
         indexes = [
-            models.Index(fields=["name"]),  # Индекс для ускорения поиска по имени
+            models.Index(fields=["name"]),
+            models.Index(fields=["is_public", "is_active"]),
         ]
-        # constraints = [
-        #     models.CheckConstraint(
-        #         check=models.Q(fields__lengthes=5000),  # TODO: Ограничение размера JSON (реализовать через валидатор)
-        #         name="fields_max_size"
-        #     )
-        # ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'creator'],
+                name='unique_template_name_per_creator'
+            )
+        ]
 
     def __str__(self) -> str:
-        """Строковое представление для админки и API."""
-        creator_username = self.creator.username if self.creator else "Неизвестный"
-        return f"{self.name} (автор: {creator_username})"
-
-    # TODO: Добавить метод для генерации превью карточки
-    # def get_preview_html(self) -> str:
-    #     """Генерирует HTML-превью на основе fields."""
-    #     pass
+        return f"{self.name} (ID: {self.id})"
+    
+    def clean(self) -> None:
+        """Дополнительная валидация модели перед сохранением."""
+        super().clean()
+        if len(self.name.strip()) < 3:
+            raise ValidationError(
+                _("Название шаблона должно содержать минимум 3 символа")
+            )
 
 
 class CardInstance(models.Model):
+    """
+    Конкретный экземпляр карточки, созданный по шаблону.
+    
+    Attributes:
+        template: Ссылка на шаблон
+        data: Данные карточки в JSON-формате
+        created_by: Пользователь, создавший карточку
+    """
+    
     template = models.ForeignKey(
-        CardTemplate, 
+        CardTemplate,
         on_delete=models.CASCADE,
-        related_name="cards"
+        related_name="instances",
+        verbose_name=_("Шаблон")
     )
-    data = models.JSONField(verbose_name="Данные карточки")  # Пример: {"question": "Текст", "image": "previews/img1.png"}
-    created_at = models.DateTimeField(auto_now_add=True)
+    
+    data = models.JSONField(
+        verbose_name=_("Данные карточки"),
+        help_text=_("Заполненные данные согласно структуре шаблона")
+    )
+    
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=_("Создатель"),
+        related_name="created_cards"
+    )
+    
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_("Дата создания")
+    )
+    
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Дата обновления")
+    )
+
+    class Meta:
+        verbose_name = _("Экземпляр карточки")
+        verbose_name_plural = _("Экземпляры карточек")
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["template", "created_at"]),
+        ]
+
+    def __str__(self) -> str:
+        return f"Карточка {self.id} (Шаблон: {self.template_id})"
+    
+    def clean(self) -> None:
+        """Валидация данных карточки согласно шаблону."""
+        super().clean()
+        if not isinstance(self.data, dict):
+            raise ValidationError(
+                _("Данные карточки должны быть в формате JSON-объекта")
+            )
+        
+        # Здесь можно добавить дополнительную валидацию данных
+        # против структуры шаблона (self.template.fields)

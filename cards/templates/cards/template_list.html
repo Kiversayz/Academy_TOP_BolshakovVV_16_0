@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="page-header">Шаблоны карточек</h1>
+    <div class="template-gallery">
+      {% for template in templates %}
+        <div class="template-card">
+          <a href="{% url 'template_detail' template.pk %}">
+            <img src="{{ template.image.url }}" alt="Preview" class="template-image">
+            <h2 class="template-title">{{ template.name }}</h2>
+            <p class="template-description">{{ template.description|truncatewords:15 }}</p>
+          </a>
+          <div class="template-actions">
+            {% if template.creator == user %}
+              <a href="{% url 'template_update' template.pk %}" class="edit-button">Редактировать</a>
+              <a href="{% url 'template_delete' template.pk %}" class="delete-button">Удалить</a>
+            {% endif %}
+            <button class="favorite-button" data-template-id="{{ template.pk }}">
+              <span class="star-icon">&#9733;</span> Добавить в избранное
+            </button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="add-template-button">
+      <a href="{% url 'create_template' %}" class="btn btn-primary">Создать шаблон</a>
+    </div>
+  </div>
+{% endblock %}
+
+

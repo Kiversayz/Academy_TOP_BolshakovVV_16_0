@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="page-header">{{ template.name }}</h1>
+    
+    <!-- Блок с изображением шаблона -->
+    <div class="template-preview">
+      {% if template.image %}
+        <img src="{{ template.image.url }}" alt="Template Preview" class="img-fluid" style="max-width: 400px; max-height: 400px;">
+      {% else %}
+        <p>Изображение не загружено</p>
+      {% endif %}
+    </div>
+    
+    <!-- Описание шаблона -->
+    <div class="template-description">
+      <h3>Описание</h3>
+      <p>{{ template.description }}</p>
+    </div>
+    
+    <!-- JSON структура -->
+    <div class="template-json">
+      <h3>JSON структура</h3>
+      <pre>{{ template.json_data|json_script }}</pre>
+    </div>
+
+    <!-- Кнопки действий (только для владельца шаблона) -->
+    {% if user == template.creator or user.is_staff %}
+      <div class="actions">
+        <a href="{% url 'template_update' template.pk %}" class="btn btn-primary">Редактировать</a>
+        
+        <!-- Кнопка удаления шаблона -->
+        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Удалить</button>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Модальное окно для подтверждения удаления -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Подтверждение удаления</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Вы уверены, что хотите удалить этот шаблон? Это действие невозможно отменить.
+        </div>
+        <div class="modal-footer">
+          <form method="POST" action="{% url 'template_delete' template.pk %}">
+            {% csrf_token %}
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-danger">Удалить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+/* === Общие стили === */
+body {
+    background-color: #f8f9fa; /* светлый серый фон */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: #343a40; /* тёмный текст */
+}
+
+/* === Заголовок === */
+#page-title {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* === Навигация === */
+#main-nav a {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+#main-nav a:hover {
+    color: #ffc107; /* жёлтый акцент при наведении */
+}
+
+/* === Карточки на главной === */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.75rem;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+.btn i {
+    vertical-align: middle;
+}
+
+/* === Подвал === */
+#footer {
+    font-size: 0.875rem;
+}
+
+/* === Кнопка в разработке === */
+#card-table-btn.disabled {
+    pointer-events: none;
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Стили для ролей */
+.role-badges .badge {
+    font-size: 0.9rem;
+    padding: 0.35em 0.65em;
+}
+
+/* Адаптивные карточки */
+@media (max-width: 768px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+/* Анимации */
+.card {
+    transition: all 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Специфичные стили для разных ролей */
+body.role-guest {
+    background-color: #f8f9fa;
+}
+body.role-creator {
+    background-color: #f0fff4;
+}
+body.role-admin {
+    background-color: #fff0f0;
+}

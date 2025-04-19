@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="role-badges mb-3">
+    {% if user_role == 'ADMIN' %}
+    <span class="badge bg-danger">
+        <i class="bi bi-shield-lock"></i> Администратор
+    </span>
+    {% elif user_role == 'CREATOR' %}
+    <span class="badge bg-success">
+        <i class="bi bi-pencil-square"></i> Создатель
+    </span>
+    {% elif user_role == 'MODERATOR' %}
+    <span class="badge bg-primary">
+        <i class="bi bi-eye"></i> Модератор
+    </span>
+    {% elif user_role == 'EDITOR' %}
+    <span class="badge bg-info text-dark">
+        <i class="bi bi-pencil"></i> Редактор
+    </span>
+    {% elif user_role == 'USER' %}
+    <span class="badge bg-secondary">
+        <i class="bi bi-person"></i> Пользователь
+    </span>
+    {% else %}
+    <span class="badge bg-light text-dark">
+        <i class="bi bi-person-x"></i> Гость
+    </span>
+    {% endif %}
+</div>
