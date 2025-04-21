@@ -1,32 +1,75 @@
+<!-- cards/templates/cards/template_list.html -->
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}Список шаблонов{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h1 class="page-header">Шаблоны карточек</h1>
-    <div class="template-gallery">
-      {% for template in templates %}
-        <div class="template-card">
-          <a href="{% url 'template_detail' template.pk %}">
-            <img src="{{ template.image.url }}" alt="Preview" class="template-image">
-            <h2 class="template-title">{{ template.name }}</h2>
-            <p class="template-description">{{ template.description|truncatewords:15 }}</p>
-          </a>
-          <div class="template-actions">
-            {% if template.creator == user %}
-              <a href="{% url 'template_update' template.pk %}" class="edit-button">Редактировать</a>
-              <a href="{% url 'template_delete' template.pk %}" class="delete-button">Удалить</a>
-            {% endif %}
-            <button class="favorite-button" data-template-id="{{ template.pk }}">
-              <span class="star-icon">&#9733;</span> Добавить в избранное
-            </button>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2>📚 Мои шаблоны</h2>
+  <a href="{% if user.is_authenticated %}{% url 'cards:create_template' %}{% else %}{% url 'login' %}?next={% url 'cards:create_template' %}{% endif %}" 
+     class="btn btn-primary" id="create-template-btn">
+      <i class="bi bi-plus-circle"></i> Создать свой шаблон
+  </a>
+</div>
+<div class="container mt-4">
+  <h2 class="mb-4">Галерея шаблонов</h2>
+  <div class="row">
+    {% for template in templates %}
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+          {% if template.preview_image %}
+            <img src="{{ template.preview_image.url }}" class="card-img-top" alt="{{ template.name }}">
+          {% else %}
+            <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+              <span class="text-muted">Без превью</span>
+            </div>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ template.name }}</h5>
+            <p class="card-text small text-muted">
+              {{ template.description|default:"Нет описания" }}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="{% url 'cards:template_detail' template.pk %}" class="btn btn-outline-primary btn-sm">
+                Подробнее
+              </a>
+
+              <!-- Кнопка избранного -->
+              <button type="button"
+                      class="btn btn-sm favorite-toggle {% if template.is_favorite %}active{% endif %}"
+                      data-template-id="{{ template.pk }}"
+                      title="Добавить в избранное">
+                <i class="bi {% if template.is_favorite %}bi-star-fill{% else %}bi-star{% endif %}"></i>
+              </button>
+            </div>
           </div>
         </div>
-      {% endfor %}
-    </div>
-    <div class="add-template-button">
-      <a href="{% url 'create_template' %}" class="btn btn-primary">Создать шаблон</a>
+      </div>
+    {% empty %}
+      <p>Нет шаблонов</p>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Модальное окно удаления -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteModalLabel">Удалить шаблон?</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        Вы уверены, что хотите удалить этот шаблон? Это действие необратимо.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+        <form id="deleteForm" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Удалить</button>
+        </form>
+      </div>
     </div>
   </div>
+</div>
 {% endblock %}
-
-

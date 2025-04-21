@@ -1,53 +1,95 @@
 {% extends 'base.html' %}
+{% load form_tags %}
+{% load static %}
+
+{% block title %}{{ form.instance.pk|yesno:"Редактирование шаблона,Создание шаблона" }}{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h1 class="page-header">Редактирование шаблона</h1>
+<div class="container mt-5" id="template-form-container">
+    <h2 class="mb-4">
+        {{ form.instance.pk|yesno:"Редактировать шаблон,Создать шаблон" }}
+    </h2>
 
-    <form method="POST" enctype="multipart/form-data" class="template-form">
-      {% csrf_token %}
-      
-      <div class="form-group">
-        <label for="id_name">Название шаблона</label>
-        <input type="text" name="name" id="id_name" class="form-control" value="{{ form.name.value }}" required>
-        {% if form.name.errors %}
-          <div class="error-message">{{ form.name.errors }}</div>
-        {% endif %}
-      </div>
-      
-      <div class="form-group">
-        <label for="id_description">Описание шаблона</label>
-        <textarea name="description" id="id_description" class="form-control" rows="4" required>{{ form.description.value }}</textarea>
-        {% if form.description.errors %}
-          <div class="error-message">{{ form.description.errors }}</div>
-        {% endif %}
-      </div>
-      
-      <div class="form-group">
-        <label for="id_image">Изображение шаблона</label>
-        {% if form.instance.image %}
-          <div class="image-preview">
-            <img src="{{ form.instance.image.url }}" alt="Preview" class="img-fluid" style="max-width: 200px; max-height: 200px;">
-          </div>
-        {% endif %}
-        <input type="file" name="image" id="id_image" class="form-control-file">
-        {% if form.image.errors %}
-          <div class="error-message">{{ form.image.errors }}</div>
-        {% endif %}
-      </div>
+    <form method="post" enctype="multipart/form-data" novalidate id="template-form">
+        {% csrf_token %}
 
-      <div class="form-group">
-        <label for="id_json">JSON структура шаблона</label>
-        <textarea name="json_data" id="id_json" class="form-control" rows="10" required>{{ form.json_data.value }}</textarea>
-        {% if form.json_data.errors %}
-          <div class="error-message">{{ form.json_data.errors }}</div>
-        {% endif %}
-      </div>
+        <!-- Название шаблона -->
+        <div class="mb-3">
+            <label for="{{ form.name.id_for_label }}" class="form-label">Название шаблона</label>
+            {{ form.name|add_class:"form-control" }}
+            {% if form.name.errors %}
+                <div class="text-danger small mt-1">
+                    {{ form.name.errors.as_text }}
+                </div>
+            {% endif %}
+        </div>
 
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
-        <a href="{% url 'templates_list' %}" class="btn btn-secondary">Отмена</a>
-      </div>
+        <!-- Описание -->
+        <div class="mb-3">
+            <label for="id_description" class="form-label">Описание шаблона</label>
+            <textarea name="description" id="id_description" class="form-control" rows="3">{{ form.instance.description }}</textarea>
+        </div>
+
+        <!-- Поле JSON -->
+        <div class="mb-3">
+            <label for="{{ form.fields.id_for_label }}" class="form-label">JSON-структура</label>
+            {{ form.fields|add_class:"form-control font-monospace" }}
+            {% if form.fields.errors %}
+                <div class="text-danger small mt-1">
+                    {{ form.fields.errors.as_text }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Загрузка превью -->
+        <div class="mb-3">
+            <label class="form-label d-block">Превью шаблона</label>
+
+            {% if form.instance.preview_image %}
+                <div class="mb-3" id="preview-block">
+                    <img src="{{ form.instance.preview_image.url }}" alt="Превью" class="img-thumbnail mb-2" style="max-height: 200px;">
+                    <div>
+                        <button type="button" class="btn btn-sm btn-outline-danger" id="remove-preview-btn">
+                            <i class="bi bi-trash"></i> Удалить изображение
+                        </button>
+                    </div>
+                </div>
+            {% endif %}
+
+            <input type="file" name="preview_image" id="id_preview_image" accept="image/*" class="form-control">
+            <input type="hidden" name="remove_preview" id="remove_preview" value="0">
+        </div>
+
+        <!-- Избранное -->
+        <div class="form-check mb-4">
+            <input type="checkbox" name="is_favorite" id="id_is_favorite" class="form-check-input" {% if form.instance.is_favorite %}checked{% endif %}>
+            <label class="form-check-label" for="id_is_favorite">
+                Отметить как избранное
+            </label>
+        </div>
+
+        <!-- Кнопки -->
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'cards:template_list' %}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Назад
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Сохранить
+            </button>
+        </div>
     </form>
-  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Удаление превью
+    const removeBtn = document.getElementById("remove-preview-btn");
+    if (removeBtn) {
+        removeBtn.addEventListener("click", () => {
+            document.getElementById("preview-block").style.display = "none";
+            document.getElementById("remove_preview").value = "1";
+        });
+    }
+</script>
 {% endblock %}

@@ -1,158 +1,164 @@
-from typing import Any, Dict
-from django.db.models import Count, Q, QuerySet
-from django.views.generic import (
-    ListView, DetailView, 
-    CreateView, UpdateView, 
-    DeleteView
-)
-from django.contrib.auth.mixins import (
-    LoginRequiredMixin, 
-    UserPassesTestMixin
-)
-from django.urls import reverse_lazy
-from django.http import HttpRequest, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import PermissionDenied
-
-from .models import CardTemplate, CardInstance
+from django.http import HttpRequest, HttpResponse
+from .models import CardTemplate
 from .forms import CardTemplateForm
-from .services import TemplatePermissionService
-from .constants import UserRoles
+import logging
+import os
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 
 
-class TemplateListView(ListView):
+logger = logging.getLogger(__name__)
+
+
+@login_required
+def card_template_list(request: HttpRequest) -> HttpResponse:
     """
-    Отображает список шаблонов карточек с учетом прав доступа.
-    Реализует пагинацию и аннотацию количества карточек.
+    Отображает список всех шаблонов карточек.
     """
-    model = CardTemplate
-    template_name = 'cards/template_list.html'
-    context_object_name = 'templates'
-    paginate_by = 10
-    ordering = ['-created_at']
-
-    def get_queryset(self) -> QuerySet:
-        """Возвращает QuerySet с учетом роли пользователя."""
-        queryset = super().get_queryset().annotate(
-            cards_count=Count('instances')
-        )
-
-        if not self.request.user.is_authenticated:
-            return queryset.filter(is_public=True)
-
-        if self.request.user.role == UserRoles.ADMIN:
-            return queryset
-
-        if self.request.user.role == UserRoles.MODERATOR:
-            return queryset.filter(Q(is_public=True) | Q(creator=self.request.user))
-
-        if self.request.user.role == UserRoles.CREATOR:
-            return queryset.filter(
-                Q(is_public=True) | 
-                Q(creator=self.request.user) |
-                Q(editors=self.request.user)
-            )
-
-        return queryset.filter(is_public=True)
+    templates = CardTemplate.objects.all().select_related("creator")
+    return render(request, 'cards/template_list.html', {'templates': templates})
 
 
-class TemplateDetailView(DetailView):
-    """Детальное представление шаблона с проверкой прав доступа."""
-    model = CardTemplate
-    template_name = 'cards/template_detail.html'
-    context_object_name = 'template'
+@login_required
+def create_template(request: HttpRequest) -> HttpResponse:
+    """
+    Создает новый шаблон карточки.
+    """
+    if request.method == 'POST':
+        form = CardTemplateForm(request.POST, request.FILES)
+        if form.is_valid():
+            template = form.save(commit=False)
+            template.creator = request.user
+            template.description = request.POST.get('description', '')
+            template.is_favorite = bool(request.POST.get('is_favorite'))
+            try:
+                template.save()
+                logger.info(f"[Создание] Шаблон '{template.name}' создан пользователем {request.user}")
+                return redirect('template_list')
+            except Exception as e:
+                logger.error(f"[Ошибка] Не удалось сохранить шаблон: {e}")
+                form.add_error(None, "Ошибка при сохранении шаблона.")
+    else:
+        form = CardTemplateForm()
 
-    def dispatch(self, request: HttpRequest, *args: Any, **kwargs: Any) -> Any:
-        """Проверяет доступ к шаблону перед отображением."""
-        template = self.get_object()
-        if not TemplatePermissionService.can_view_template(request.user, template):
-            raise PermissionDenied("У вас нет прав для просмотра этого шаблона")
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        """Добавляет флаг возможности редактирования в контекст."""
-        context = super().get_context_data(**kwargs)
-        context['can_edit'] = TemplatePermissionService.can_edit_template(
-            self.request.user, self.object
-        )
-        return context
-
-
-class TemplateCreateView(LoginRequiredMixin, CreateView):
-    """Создание нового шаблона карточек."""
-    model = CardTemplate
-    form_class = CardTemplateForm
-    template_name = 'cards/template_form.html'
-    success_url = reverse_lazy('cards:templates_list')
-
-    def form_valid(self, form: CardTemplateForm) -> HttpResponseRedirect:
-        """Устанавливает создателя шаблона перед сохранением."""
-        form.instance.creator = self.request.user
-        return super().form_valid(form)
+    return render(request, 'cards/template_form.html', {'form': form})
 
 
-class TemplateUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    """Редактирование существующего шаблона."""
-    model = CardTemplate
-    form_class = CardTemplateForm
-    template_name = 'cards/template_form.html'
-
-    def test_func(self) -> bool:
-        """Проверяет права на редактирование шаблона."""
-        return TemplatePermissionService.can_edit_template(
-            self.request.user, self.get_object()
-        )
-
-    def get_success_url(self) -> str:
-        """Перенаправляет на страницу шаблона после редактирования."""
-        return reverse_lazy('cards:template_detail', kwargs={'pk': self.object.pk})
+@login_required
+def template_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    """
+    Отображает подробную информацию о шаблоне карточки.
+    """
+    template = get_object_or_404(CardTemplate, pk=pk)
+    is_owner = request.user == template.creator or request.user.is_staff
+    return render(request, 'cards/template_detail.html', {
+        'template': template,
+        'is_owner': is_owner
+    })
 
 
-class TemplateDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """Мягкое удаление шаблона (is_active=False)."""
-    model = CardTemplate
-    template_name = 'cards/template_confirm_delete.html'
-    success_url = reverse_lazy('cards:templates_list')
+@login_required
+def template_update(request: HttpRequest, pk: int) -> HttpResponse:
+    """
+    Обновляет существующий шаблон карточки.
+    Только владелец шаблона или администратор может редактировать.
+    """
+    template = get_object_or_404(CardTemplate, pk=pk)
 
-    def test_func(self) -> bool:
-        """Проверяет права на удаление шаблона."""
-        return TemplatePermissionService.can_delete_template(
-            self.request.user, self.get_object()
-        )
+    if request.user != template.creator and not request.user.is_staff:
+        raise PermissionDenied("Недостаточно прав для редактирования шаблона.")
 
-    def delete(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponseRedirect:
-        """Выполняет мягкое удаление вместо полного."""
-        self.object = self.get_object()
-        self.object.is_active = False
-        self.object.save()
-        return HttpResponseRedirect(self.get_success_url())
+    if request.method == 'POST':
+        form = CardTemplateForm(request.POST, request.FILES, instance=template)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.description = request.POST.get('description', '')
+            instance.is_favorite = bool(request.POST.get('is_favorite'))
+
+            # Удаление старого изображения, если указано
+            if request.POST.get('remove_preview') == '1' and instance.preview_image:
+                if os.path.isfile(instance.preview_image.path):
+                    os.remove(instance.preview_image.path)
+                instance.preview_image = None
+
+            # Если загружено новое изображение — заменить
+            if 'preview_image' in request.FILES:
+                instance.preview_image = request.FILES['preview_image']
+
+            try:
+                instance.save()
+                logger.info(f"[Обновление] Шаблон '{instance.name}' обновлён пользователем {request.user}")
+                return redirect('template_list')
+            except Exception as e:
+                logger.error(f"[Ошибка] Обновление шаблона '{template.name}' не удалось: {e}")
+                form.add_error(None, "Ошибка при сохранении изменений.")
+    else:
+        form = CardTemplateForm(instance=template)
+
+    return render(request, 'cards/template_form.html', {'form': form})
 
 
-class CardInstanceCreateView(LoginRequiredMixin, CreateView):
-    """Создание экземпляра карточки на основе шаблона."""
-    model = CardInstance
-    fields = ['data']
-    template_name = 'cards/cardinstance_form.html'
+@login_required
+def template_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    """
+    Удаляет шаблон карточки.
+    Только владелец или администратор может удалить.
+    """
+    template = get_object_or_404(CardTemplate, pk=pk)
 
-    def dispatch(self, request: HttpRequest, *args: Any, **kwargs: Any) -> Any:
-        """Получает шаблон и проверяет права доступа."""
-        self.template = get_object_or_404(CardTemplate, pk=kwargs['template_pk'])
-        if not TemplatePermissionService.can_add_card_instance(request.user, self.template):
-            raise PermissionDenied("У вас нет прав для создания карточек в этом шаблоне")
-        return super().dispatch(request, *args, **kwargs)
+    if request.user != template.creator and not request.user.is_staff:
+        raise PermissionDenied("Недостаточно прав для удаления шаблона.")
 
-    def form_valid(self, form: CardTemplateForm) -> HttpResponseRedirect:
-        """Устанавливает шаблон и создателя перед сохранением."""
-        form.instance.template = self.template
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+    if request.method == 'POST':
+        # Удаление изображения, если есть
+        if template.preview_image and os.path.isfile(template.preview_image.path):
+            os.remove(template.preview_image.path)
 
-    def get_success_url(self) -> str:
-        """Перенаправляет на страницу шаблона после создания."""
-        return reverse_lazy('cards:template_detail', kwargs={'pk': self.template.pk})
+        name = template.name
+        template.delete()
+        logger.info(f"[Удаление] Шаблон '{name}' удалён пользователем {request.user}")
+        return redirect('template_list')
 
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        """Добавляет шаблон в контекст."""
-        context = super().get_context_data(**kwargs)
-        context['template'] = self.template
-        return context
+    # Удаление теперь должно вызываться через JS-модалку (не используется отдельная страница)
+    raise PermissionDenied("Удаление должно происходить через POST.")
+
+@require_POST
+@login_required
+def toggle_favorite(request, pk):
+    """
+    Переключает статус 'избранное' для шаблона.
+
+    Args:
+        request (HttpRequest): Запрос от пользователя
+        pk (int): ID шаблона
+
+    Returns:
+        JsonResponse: Новый статус is_favorite
+    """
+    template = get_object_or_404(CardTemplate, pk=pk)
+
+    if template.creator != request.user and not request.user.is_staff:
+        return JsonResponse({'error': 'Доступ запрещен'}, status=403)
+
+    template.is_favorite = not template.is_favorite
+    template.save()
+    return JsonResponse({'is_favorite': template.is_favorite})
+
+
+@login_required
+def publish_template(request, pk):
+    """
+    Заглушка: Сделать шаблон публичным.
+    """
+    return JsonResponse({'status': 'stub', 'message': 'Публикация временно не реализована.'})
+
+
+@login_required
+def unpublish_template(request, pk):
+    """
+    Заглушка: Снять шаблон с публикации.
+    """
+    return JsonResponse({'status': 'stub', 'message': 'Снятие с публикации временно не реализовано.'})

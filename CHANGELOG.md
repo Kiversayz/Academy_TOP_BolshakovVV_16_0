@@ -53,7 +53,7 @@
   - Написаны FBV (функции-представления) для отображения списка шаблонов и создания новых.  
   - Созданы HTML-шаблоны для интерфейса.  
 - **Затронутые файлы**:  
-  - `cards/views.py` (функции `card_templates_list`, `create_template`).  
+  - `cards/views.py` (функции `card_template_list`, `create_template`).  
   - `cards/urls.py` (маршруты для views).  
   - Шаблоны:  
     - `cards/templates/cards/templates_list.html`  

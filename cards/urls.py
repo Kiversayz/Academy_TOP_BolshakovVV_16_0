@@ -4,9 +4,13 @@ from . import views
 app_name = 'cards'
 
 urlpatterns = [
-    path('templates/', views.TemplateListView.as_view(), name='template_list'),
-    path('templates/create/', views.TemplateCreateView.as_view(), name='template_create'),
-    path('templates/<int:pk>/', views.TemplateDetailView.as_view(), name='template_detail'),
-    path('templates/<int:pk>/edit/', views.TemplateUpdateView.as_view(), name='template_update'),
-    path('templates/<int:pk>/delete/', views.TemplateDeleteView.as_view(), name='template_delete'),
+    path('', views.card_template_list, name='template_list'),
+    path('create/', views.create_template, name='create_template'),
+    path('<int:pk>/', views.template_detail, name='template_detail'),
+    path('<int:pk>/edit/', views.template_update, name='template_update'),
+    path('<int:pk>/delete/', views.template_delete, name='template_delete'),
+    path('<int:pk>/favorite/', views.toggle_favorite, name='toggle_favorite'),
+    path('<int:pk>/publish/', views.publish_template, name='publish_template'),
+    path('<int:pk>/unpublish/', views.unpublish_template,
+         name='unpublish_template'),
 ]
