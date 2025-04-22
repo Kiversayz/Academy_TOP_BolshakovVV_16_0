@@ -1,13 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.exceptions import PermissionDenied
-from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.core.exceptions import PermissionDenied, ValidationError
+from django.http import HttpRequest, HttpResponse, JsonResponse, HttpResponseForbidden
 from .models import CardTemplate, CardInstance
 from .forms import CardTemplateForm
 import logging
 from django.db import transaction
 from django.views.decorators.http import require_POST
-from django.core.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
 
@@ -193,7 +192,7 @@ def create_card_instance(request, template_id):
             data=form_data['card_data'],
             created_by=request.user,
             meta_data={
-                'tags': form_data['tags'],
+                'tags': form_data.get('tags', []),
                 'created_via': 'web_form'
             }
         )
@@ -223,6 +222,10 @@ def create_card_instance(request, template_id):
             'message': 'Внутренняя ошибка сервера'
         }, status=500)
 
+
+@login_required
+def card_instance_detail(request, pk):
+    return HttpResponse(f"Детальный просмотр карточки #{pk} (будет позже)")
 
 @login_required
 def publish_template(request, pk):

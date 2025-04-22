@@ -30,15 +30,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 🗑️ Модальное удаление
+  // Модальное удаление
   const deleteConfirmModal = document.getElementById('deleteConfirmModal');
   const deleteForm = document.getElementById('deleteForm');
 
   window.showDeleteModal = function(templateId) {
-    deleteForm.action = `/cards/${templateId}/delete/`;
-    const modal = new bootstrap.Modal(deleteConfirmModal);
-    modal.show();
+      deleteForm.action = `/cards/${templateId}/delete/`;
+      const modal = new bootstrap.Modal(deleteConfirmModal);
+      modal.show();
   };
+
+  deleteForm.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Предотвращаем стандартную отправку формы
+
+      try {
+          const templateId = deleteForm.action.split('/').pop(); // Получаем pk из URL
+          const response = await fetch(deleteForm.action, {
+              method: 'POST',
+              headers: {
+                  'X-CSRFToken': getCookie('csrftoken'),
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({}) // Пустой тело, если не нужны данные
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+              // Закрываем модальное окно
+              deleteConfirmModal.modal('hide');
+              // Удалить карточку из DOM
+              const cardToRemove = document.querySelector(`[data-template-id="${templateId}"]`);
+              if (cardToRemove) {
+                  cardToRemove.remove();
+              }
+              // Показываем уведомление
+              showToast('Успех!', 'Шаблон успешно удален', 'success');
+
+              // Обновляем список шаблонов (например, перезагружаем страницу)
+              // location.reload();
+          } else {
+              showToast('Ошибка', data.error || 'Не удалось удалить', 'danger');
+          }
+      } catch (error) {
+          showToast('Ошибка', 'Ошибка соединения', 'danger');
+      }
+  });
 });
 
 // 🔒 Получение CSRF токена

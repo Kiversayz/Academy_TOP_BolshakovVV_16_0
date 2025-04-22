@@ -13,4 +13,5 @@ urlpatterns = [
     path('<int:pk>/publish/', views.publish_template, name='publish_template'),
     path('<int:pk>/unpublish/', views.unpublish_template, name='unpublish_template'),
     path('<int:template_id>/create-card/', views.create_card_instance, name='create_card_instance'),
+    path('instances/<int:pk>/', views.card_instance_detail, name='instance_detail'),
 ]

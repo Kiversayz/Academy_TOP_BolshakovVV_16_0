@@ -244,6 +244,14 @@ class CardInstance(models.Model):
         auto_now=True,
         verbose_name=_("Дата обновления")
     )
+    
+    meta_data = models.JSONField(
+        verbose_name=_("Метаданные"),
+        blank=True,
+        null=True,
+        default=dict,
+        help_text=_("Дополнительные данные, например, источник, версия шаблона и др.")
+    )
 
     class Meta:
         verbose_name = _("Экземпляр карточки")
