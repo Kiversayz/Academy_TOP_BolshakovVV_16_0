@@ -1,0 +1,22 @@
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="deleteForm" method="post">
+          {% csrf_token %}
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title">
+              <i class="bi bi-exclamation-triangle me-2"></i>Подтверждение удаления
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>Вы уверены, что хотите удалить этот элемент? Это действие необратимо.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-danger">Удалить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

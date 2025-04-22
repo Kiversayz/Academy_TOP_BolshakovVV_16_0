@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.validators import MinLengthValidator
 from users.models import User
 from typing import Dict, Any
+from django.urls import reverse
 
 class FieldType(models.TextChoices):
     """Типы полей для шаблонов карточек."""
@@ -83,7 +84,7 @@ class CardTemplate(models.Model):
         name: Название шаблона (макс. 100 символов)
         creator: Пользователь, создавший шаблон
         fields: Конфигурация полей в JSON-формате
-        preview_image: Превью изображение шаблона
+        preview_image: Превью изображение шаблона (бэклог)
         is_public: Флаг публичного доступа
         description: Описание шаблона
         is_favorite: Флаг избранного
@@ -111,13 +112,13 @@ class CardTemplate(models.Model):
         help_text=_("JSON-структура с описанием полей карточки")
     )
     
-    preview_image = models.ImageField(
-        upload_to='card_templates/previews/%Y/%m/%d/',
-        verbose_name=_("Превью шаблона"),
-        blank=True,
-        null=True,
-        help_text=_("Изображение для предпросмотра шаблона")
-    )
+    #preview_image = models.ImageField(
+    #    upload_to='card_templates/previews/%Y/%m/%d/',
+    #    verbose_name=_("Превью шаблона"),
+    #    blank=True,
+    #    null=True,
+    #    help_text=_("Изображение для предпросмотра шаблона")
+    #)
     
     is_public = models.BooleanField(
         default=False,
@@ -160,6 +161,12 @@ class CardTemplate(models.Model):
         auto_now=True,
         verbose_name=_("Дата обновления")
     )
+    
+    version = models.PositiveIntegerField(
+        default=1,
+        verbose_name="Версия",
+        help_text="Текущая версия шаблона"
+    )
 
     class Meta:
         verbose_name = _("Шаблон карточки")
@@ -182,10 +189,19 @@ class CardTemplate(models.Model):
     def clean(self) -> None:
         """Дополнительная валидация модели перед сохранением."""
         super().clean()
+        validate_fields_structure(self.fields)
         if len(self.name.strip()) < 3:
             raise ValidationError(
                 _("Название шаблона должно содержать минимум 3 символа")
             )
+    
+    def save(self, *args, **kwargs):
+        if self.pk:
+            # Инкремент версии при изменениях
+            original = CardTemplate.objects.get(pk=self.pk)
+            if original.fields != self.fields:
+                self.version += 1
+        super().save(*args, **kwargs)
 
 
 class CardInstance(models.Model):
@@ -247,6 +263,6 @@ class CardInstance(models.Model):
             raise ValidationError(
                 _("Данные карточки должны быть в формате JSON-объекта")
             )
-        
-        # Здесь можно добавить дополнительную валидацию данных
-        # против структуры шаблона (self.template.fields)
+
+    def get_absolute_url(self):
+        return reverse('cards:instance_detail', kwargs={'pk': self.pk})

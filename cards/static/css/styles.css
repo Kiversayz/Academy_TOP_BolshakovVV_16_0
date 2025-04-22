@@ -12,3 +12,22 @@
     height: 200px;
     object-fit: cover;
 }
+
+.toast {
+    min-width: 300px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.toast-header {
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.toast.bg-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.toast.bg-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
