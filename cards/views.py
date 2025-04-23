@@ -68,7 +68,6 @@ def template_update(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'cards/template_form.html', {'form': form})
 
 
-@require_POST
 @login_required
 def template_delete(request: HttpRequest, pk: int) -> HttpResponse:
     """Мягкое удаление шаблона."""
@@ -79,7 +78,7 @@ def template_delete(request: HttpRequest, pk: int) -> HttpResponse:
 
     template.is_active = False
     template.save()
-    return JsonResponse({'status': 'success'})
+    return JsonResponse({'success': True, 'message': 'Шаблон удален'})
 
 
 @require_POST

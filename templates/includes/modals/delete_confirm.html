@@ -10,11 +10,11 @@
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            <p>Вы уверены, что хотите удалить этот элемент? Это действие необратимо.</p>
+                    <p>{{ delete_message|default:"Вы уверены, что хотите удалить этот элемент? Это действие необратимо." }}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-            <button type="submit" class="btn btn-danger">Удалить</button>
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash me-2"></i>Удалить</button>
           </div>
         </form>
       </div>

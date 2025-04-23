@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Список шаблонов{% endblock %}
-
 {% block content %}
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -15,15 +13,15 @@
             <i class="bi bi-plus-circle me-2"></i>Создать шаблон
         </a>
     </div>
-
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {% for template in templates %}
+        {% url 'cards:template_detail' template.pk as template_detail_url %}    
         <div class="col">
-            <div class="card h-100 shadow-sm">
+            <div class="card h-100 shadow-sm" data-template-id="{{ template.pk }}">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <h5 class="card-title mb-0">
-                            <a href="{% url 'cards:template_detail' template.pk %}" 
+                                <a href="{{ template_detail_url }}"
                                class="text-decoration-none">
                                 {{ template.name }}
                             </a>
@@ -32,33 +30,33 @@
                                 class="btn btn-sm favorite-toggle {% if template.is_favorite %}active{% endif %}"
                                 data-template-id="{{ template.pk }}"
                                 title="{% if template.is_favorite %}Убрать из избранного{% else %}Добавить в избранное{% endif %}">
-                            <i class="bi {% if template.is_favorite %}bi-star-fill{% else %}bi-star{% endif %}"></i>
+                                <i class="bi {% if template.is_favorite %}bi-star-fill{% else %}bi-star{% endif %}" aria-hidden="true"></i>
+                                <span class="visually-hidden">{% if template.is_favorite %}Убрать из избранного{% else %}Добавить в избранное{% endif %}</span>
                         </button>
                     </div>
-                    
                     <div class="card-text small text-muted mb-3">
                         {{ template.description|default:"Нет описания"|truncatechars:100 }}
                     </div>
-
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="badge bg-secondary">
                             <i class="bi bi-clock-history me-1"></i>
                             {{ template.updated_at|timesince }} назад
                         </div>
                         <div class="btn-group">
-                            <a href="{% url 'cards:template_detail' template.pk %}" 
+                                <a href="{{ template_detail_url }}"
                                class="btn btn-sm btn-outline-primary">
-                                <i class="bi bi-pencil"></i>
+                                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                                    <span class="visually-hidden">Редактировать</span>
                             </a>
                             <button type="button" 
                                     class="btn btn-sm btn-outline-danger"
                                     onclick="showDeleteModal({{ template.pk }})">
-                                <i class="bi bi-trash"></i>
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                    <span class="visually-hidden">Удалить</span>
                             </button>
                         </div>
                     </div>
                 </div>
-                
                 <div class="card-footer bg-transparent">
                     <small class="text-muted">
                         <i class="bi bi-person-circle me-1"></i>
@@ -81,33 +79,9 @@
         {% endfor %}
     </div>
 </div>
-
 <!-- Модальное окно удаления -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="deleteForm" method="post">
-                {% csrf_token %}
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">
-                        <i class="bi bi-exclamation-triangle me-2"></i>Подтверждение удаления
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Вы уверены, что хотите удалить этот шаблон? Все связанные карточки будут архивированы.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button type="submit" class="btn btn-danger">Удалить</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
+{% include 'includes/modals/delete_confirm.html' %}
 {% endblock %}
-
 {% block extra_js %}
 <!-- Подключение Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
