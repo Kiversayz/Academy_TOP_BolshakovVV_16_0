@@ -1,3 +1,4 @@
+# cards/views.py
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import PermissionDenied, ValidationError
@@ -7,6 +8,7 @@ from .forms import CardTemplateForm
 import logging
 from django.db import transaction
 from django.views.decorators.http import require_POST
+from users.views import RoleRequiredMixin
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +16,7 @@ logger = logging.getLogger(__name__)
 def card_template_list(request: HttpRequest) -> HttpResponse:
     """Отображает список шаблонов карточек."""
     templates = CardTemplate.objects.filter(
-        is_active=True
+        is_public=True
     ).select_related("creator")
     return render(request, 'cards/template_list.html', {'templates': templates})
 
@@ -42,7 +44,7 @@ def create_template(request: HttpRequest) -> HttpResponse:
 @login_required
 def template_detail(request: HttpRequest, pk: int) -> HttpResponse:
     """Просмотр деталей шаблона."""
-    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+    template = get_object_or_404(CardTemplate, pk=pk, is_public=True)
     return render(request, 'cards/template_detail.html', {
         'template': template,
         'is_owner': request.user == template.creator
@@ -52,9 +54,9 @@ def template_detail(request: HttpRequest, pk: int) -> HttpResponse:
 @login_required
 def template_update(request: HttpRequest, pk: int) -> HttpResponse:
     """Редактирование шаблона."""
-    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+    template = get_object_or_404(CardTemplate, pk=pk, is_public=True)
 
-    if not (request.user == template.creator or request.user.is_staff):
+    if not (request.user == template.creator or request.user.has_perm('cards.change_cardtemplate')):
         raise PermissionDenied("Нет прав на редактирование")
 
     if request.method == 'POST':
@@ -71,12 +73,12 @@ def template_update(request: HttpRequest, pk: int) -> HttpResponse:
 @login_required
 def template_delete(request: HttpRequest, pk: int) -> HttpResponse:
     """Мягкое удаление шаблона."""
-    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+    template = get_object_or_404(CardTemplate, pk=pk, is_public=True)
 
-    if not (request.user == template.creator or request.user.is_staff):
+    if not (request.user == template.creator or request.user.has_perm('cards.delete_cardtemplate')):
         raise PermissionDenied("Нет прав на удаление")
 
-    template.is_active = False
+    template.is_public = False
     template.save()
     return JsonResponse({'success': True, 'message': 'Шаблон удален'})
 
@@ -85,9 +87,9 @@ def template_delete(request: HttpRequest, pk: int) -> HttpResponse:
 @login_required
 def toggle_favorite(request, pk):
     """Переключение избранного статуса."""
-    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+    template = get_object_or_404(CardTemplate, pk=pk, is_public=True)
 
-    if template.creator != request.user:
+    if not (request.user == template.creator or request.user.has_perm('cards.view_public_templates')):
         return JsonResponse({'error': 'Доступ запрещен'}, status=403)
 
     template.is_favorite = not template.is_favorite
@@ -135,7 +137,7 @@ def validate_card_data(form_data, fields_schema):
         if config.get('required') and not value:
             errors[field_name] = f'{field_label} - обязательное поле'
             continue
-        
+
         # Валидация по типу поля
         field_type = config.get('type', 'text')
 
@@ -168,12 +170,11 @@ def create_card_instance(request, template_id):
         # 1. Получение шаблона
         template = CardTemplate.objects.select_related('creator').get(
             pk=template_id,
-            is_active=True
+            is_public=True
         )
 
         # 2. Проверка прав доступа
-        if not (request.user == template.creator or
-                request.user.has_perm('cards.add_cardinstance')):
+        if not (request.user == template.creator or request.user.has_perm('cards.add_cardinstance')):
             return JsonResponse({
                 'status': 'error',
                 'message': 'Недостаточно прав для создания карточки'
@@ -225,6 +226,7 @@ def create_card_instance(request, template_id):
 @login_required
 def card_instance_detail(request, pk):
     return HttpResponse(f"Детальный просмотр карточки #{pk} (будет позже)")
+
 
 @login_required
 def publish_template(request, pk):

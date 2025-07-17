@@ -1,123 +1,148 @@
+# users/models.py
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.db.models import F
 
 class User(AbstractUser):
     # Убираем username, используем email как идентификатор
     username = None
     email = models.EmailField(
         unique=True,
-        verbose_name=_('Email'),
-        help_text=_('Будет использоваться для входа в систему')
+        verbose_name='Email',
+        help_text='Будет использоваться для входа в систему'
     )
-    
+
     # Контактные данные
     phone = models.CharField(
         max_length=35,
-        verbose_name=_('Телефон'),
+        verbose_name='Телефон',
         blank=True,
         null=True,
-        help_text=_('Формат: +79991234567')
+        help_text='Формат: +79991234567'
     )
     telegram = models.CharField(
         max_length=150,
-        verbose_name=_('Telegram'),
+        verbose_name='Telegram',
         blank=True,
         null=True,
-        help_text=_('Без @, например: username')
+        help_text='Без @, например: username'
     )
-    
+
+    # Личные данные
+    first_name = models.CharField(
+        max_length=100,
+        verbose_name='Имя',
+        blank=True,
+        null=True
+    )
+    last_name = models.CharField(
+        max_length=100,
+        verbose_name='Фамилия',
+        blank=True,
+        null=True
+    )
+    third_name = models.CharField(
+        max_length=100,
+        verbose_name='Отчество',
+        blank=True,
+        null=True
+    )
+
     # Визуальные настройки
     avatar = models.ImageField(
         upload_to='users/avatars/%Y/%m/',
-        verbose_name=_('Аватар'),
+        verbose_name='Аватар',
         blank=True,
         null=True,
-        help_text=_('Рекомендуемый размер: 200x200 px')
+        help_text='Рекомендуемый размер: 200x200 px'
     )
-    
+
     # Статусы
     is_active = models.BooleanField(
         default=True,
-        verbose_name=_('Активный'),
-        help_text=_('Отключенные пользователи не могут войти в систему')
+        verbose_name='Активный',
+        help_text='Отключенные пользователи не могут войти в систему'
     )
-    
+
     # Роли пользователей
     class Role(models.TextChoices):
-        GUEST = 'GUEST', _('Гость')
-        USER = 'USER', _('Пользователь')
-        CREATOR = 'CREATOR', _('Создатель')
-        EDITOR = 'EDITOR', _('Редактор')
-        MODERATOR = 'MODERATOR', _('Модератор')
-        ADMIN = 'ADMIN', _('Администратор')
-    
+        CREATOR = 'CREATOR', 'Креатор'
+        EDITOR = 'EDITOR', 'Редактор'
+        MODERATOR = 'MODERATOR', 'Модератор'
+        ADMIN = 'ADMIN', 'Администратор'
+        USER = 'USER', 'Пользователь'
+
     role = models.CharField(
         max_length=10,
         choices=Role.choices,
         default=Role.USER,
-        verbose_name=_('Роль'),
-        help_text=_('Определяет права пользователя в системе')
+        verbose_name='Роль',
+        help_text='Определяет права пользователя в системе'
     )
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']  # Убрано 'username'
 
     class Meta:
-        verbose_name = _('Пользователь')
-        verbose_name_plural = _('Пользователи')
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
         ordering = ['-date_joined']
         permissions = [
-            ("can_export_pdf", _("Может экспортировать в PDF")),
-            ("manage_private_templates", _("Доступ к приватным шаблонам")),
-            ("moderate_content", _("Может модерировать контент")),
-            ("invite_editors", _("Может приглашать редакторов")),
+        ("can_invite_users", "Может приглашать новых пользователей"),
+        ("can_manage_users", "Может управлять пользователями"),
         ]
 
     def __str__(self):
-        return f'{self.email} ({self.get_role_display()})'
+        return f'{self.email} ({self.role})'
 
     def clean(self):
         """Валидация данных перед сохранением"""
         super().clean()
-        
+
         # Проверка email
         if self.email:
             self.email = self.email.lower().strip()
-            
+
         # Проверка Telegram
         if self.telegram and self.telegram.startswith('@'):
             self.telegram = self.telegram[1:]
 
+        # Проверка телефона
+        if self.phone and not self.phone.startswith('+'):
+            raise ValidationError("Телефон должен начинаться с '+', например: +79991234567")
+
     def save(self, *args, **kwargs):
         """Автоматическое назначение ролей и обработка перед сохранением"""
-        self.full_clean()  # Вызов валидации
-        
-        # Автоназначение ролей для администраторов
+        # Суперпользователь всегда администратор
         if self.is_superuser:
             self.role = self.Role.ADMIN
+        # Статья администратора
         elif self.is_staff and self.role not in (self.Role.ADMIN, self.Role.MODERATOR):
             self.role = self.Role.MODERATOR
-            
-        # Для новых пользователей
-        if not self.pk and self.role == self.Role.GUEST:
+        # Новые пользователи по умолчанию - пользователи
+        elif not self.pk:
             self.role = self.Role.USER
-            
+
         super().save(*args, **kwargs)
 
     @property
     def is_guest(self):
-        return self.role == self.Role.GUEST or not self.is_authenticated
+        """Проверка, является ли пользователь гостем (анонимным)"""
+        return not self.is_authenticated
 
     @property
     def is_creator(self):
+        """Проверка, является ли пользователь создателем или администратором"""
         return self.role in (self.Role.CREATOR, self.Role.ADMIN)
 
     @property
     def can_moderate(self):
+        """Проверка, может ли пользователь модерировать контент"""
         return self.role in (self.Role.MODERATOR, self.Role.ADMIN)
 
     @classmethod
     def get_default_role(cls):
+        """Возвращает роль по умолчанию"""
         return cls.Role.USER

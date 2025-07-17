@@ -1,0 +1,3870 @@
+================================================================================
+File: .env
+--------------------------------------------------------------------------------
+MS_SQL_LOGIN="Kiversayz"
+MS_SQL_PASS="rabotaHARD!23456"
+MS_SQL_SERVER="ULTRASUPERPC\SQLEXPRESS"
+MS_SQL_DB="ProjectBV426"
+MS_SQL_DB_FIRST_CONNECT="master"
+MS_SQL_DRIVER="ODBC Driver 17 for SQL Server"
+SECRET_KEY="django-insecure-)jne7hc5b5h1)(u%!cmy7n)_e19tubw(=!xpz%_+zt5kiq8plu"
+
+================================================================================
+File: .env_sample
+--------------------------------------------------------------------------------
+MS_SQL_LOGIN="..."
+MS_SQL_PASS="..."
+MS_SQL_SERVER="...\SQLEXPRESS"
+MS_SQL_DB="..."
+MS_SQL_DB_FIRST_CONNECT="master"
+MS_SQL_DRIVER="ODBC Driver ... for SQL Server"
+
+================================================================================
+File: .gitignore
+--------------------------------------------------------------------------------
+# Created by https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,django,visualstudiocode
+pupu.py
+DJANGO.txt
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+
+# If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
+# in your Git repository. Update and uncomment the following line accordingly.
+# <django-project-name>/staticfiles/
+
+### Django.Python Stack ###
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+
+# Django stuff:
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/#use-with-ide
+.pdm.toml
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+
+# C extensions
+
+# Distribution / packaging
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+
+# Installer logs
+
+# Unit test / coverage reports
+
+# Translations
+
+# Django stuff:
+
+# Flask stuff:
+
+# Scrapy stuff:
+
+# Sphinx documentation
+
+# PyBuilder
+
+# Jupyter Notebook
+
+# IPython
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/#use-with-ide
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+
+# Celery stuff
+
+# SageMath parsed files
+
+# Environments
+
+# Spyder project settings
+
+# Rope project settings
+
+# mkdocs documentation
+
+# mypy
+
+# Pyre type checker
+
+# pytype static type analyzer
+
+# Cython debug symbols
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+
+### Python Patch ###
+# Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
+poetry.toml
+
+# ruff
+.ruff_cache/
+
+# LSP config files
+pyrightconfig.json
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode
+
+================================================================================
+File: c.py
+--------------------------------------------------------------------------------
+import os
+
+# Настройки
+project_root = '.'  # текущая директория — корень проекта
+output_file = 'project_summary.txt'
+
+# Что игнорировать
+ignore_dirs = ['venv', '__pycache__', '.git', 'node_modules', '.venv', '.vscode']
+ignore_files = ['.pyc', '.log', '.jpg', '.png', '.exe', '.DS_Store', '.ico']
+
+def is_text_file(filename):
+    """Проверяет, является ли файл текстовым."""
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            f.read(1024)
+        return True
+    except UnicodeDecodeError:
+        return False
+    except Exception:
+        return False
+
+def collect_project_files(root_dir):
+    collected_content = ""
+    for root, dirs, files in os.walk(root_dir):
+        # Убираем ненужные папки
+        dirs[:] = [d for d in dirs if d not in ignore_dirs]
+
+        for file in files:
+            file_path = os.path.join(root, file)
+
+            # Пропустить игнорируемые расширения
+            if any(file.endswith(ext) for ext in ignore_files):
+                continue
+
+            if is_text_file(file_path):
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    
+                    relative_path = os.path.relpath(file_path, root_dir)
+                    collected_content += f"{'='*80}\n"
+                    collected_content += f"File: {relative_path}\n"
+                    collected_content += f"{'-'*80}\n"
+                    collected_content += content + "\n\n"
+                except Exception as e:
+                    print(f"[ERROR] Can't read file {file_path}: {e}")
+    return collected_content
+
+if __name__ == '__main__':
+    print("Сборка проекта в один файл...")
+    content = collect_project_files(project_root)
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(content)
+    
+    print(f"Проект успешно собран в файл: {output_file}")
+
+================================================================================
+File: CHANGELOG.md
+--------------------------------------------------------------------------------
+# Changelog - Проект: Веб-сервис для создания карточных игр
+
+
+## [0.16.2] - 2025-04-14 
+
+#### **1. Добавление библиотеки для работы с изображениями**  
+- **Изменения**:  
+  - Установлена библиотека `Pillow` для обработки изображений.  
+- **Затронутые файлы**:  
+  - `requirements.txt` (добавлена строка `Pillow`).  
+---
+#### **2. Создание нового приложения `export`**  
+- **Изменения**:  
+  - Добавлено приложение `export` для генерации PDF-файлов.  
+  - Настройки проекта обновлены для подключения приложения.  
+- **Затронутые файлы**:  
+  - `config/settings.py` (добавлено `'export'` в `INSTALLED_APPS`).  
+  - Создана структура приложения:  
+    ```
+    export/
+      ├── __init__.py
+      ├── admin.py
+      ├── apps.py
+      └── models.py
+    ```  
+---
+#### **3. Реализация связанных моделей**  
+- **Изменения**:  
+  - Созданы модели `CardTemplate` (шаблон карточки) и `CardInstance` (экземпляр карточки).  
+  - Добавлена связь `ForeignKey` между моделями.  
+- **Затронутые файлы**:  
+  - `cards/models.py` (реализация моделей).  
+  - Миграции:  
+    - `cards/migrations/0001_initial.py`  
+    - `cards/migrations/0003_cardinstance.py`  
+---
+#### **4. Настройка статических и медиафайлов**  
+- **Изменения**:  
+  - Добавлены настройки для работы со статикой и медиафайлами.  
+  - Настроены пути для загрузки изображений.  
+- **Затронутые файлы**:  
+  - `config/settings.py` (добавлены `STATIC_URL`, `MEDIA_URL`, `MEDIA_ROOT`).  
+  - `config/urls.py` (добавлена обработка медиафайлов).  
+---
+#### **5. Настройка маршрутов приложений**  
+- **Изменения**:  
+  - Добавлены URL-маршруты для приложений `cards` и `export`.  
+- **Затронутые файлы**:  
+  - `config/urls.py` (подключены `path('cards/', ...)` и `path('export/', ...)`).  
+---
+#### **6. Реализация FBV и шаблонов**  
+- **Изменения**:  
+  - Написаны FBV (функции-представления) для отображения списка шаблонов и создания новых.  
+  - Созданы HTML-шаблоны для интерфейса.  
+- **Затронутые файлы**:  
+  - `cards/views.py` (функции `card_template_list`, `create_template`).  
+  - `cards/urls.py` (маршруты для views).  
+  - Шаблоны:  
+    - `cards/templates/cards/templates_list.html`  
+    - `cards/templates/cards/create_template.html`  
+---
+### **Общие изменения**  
+- **Настройки проекта**:  
+  - Обновлен `config/settings.py` (добавлены приложения, медиафайлы).  
+  - Обновлен `config/urls.py` (маршруты, медиа).  
+- **Структура проекта**:  
+  - Созданы папки `media/` и `static/`.  
+  - Добавлены шаблоны для приложения `cards`.  
+---
+**Полный список затронутых файлов**:  
+- `config/settings.py`  
+- `config/urls.py`  
+- `cards/models.py`  
+- `cards/views.py`  
+- `cards/urls.py`  
+- `cards/templates/cards/*.html`  
+- `cards/migrations/*`  
+- `export/` (все файлы приложения)  
+- `requirements.txt`  
+---
+**Примечание**: Все изменения успешно применены, миграции выполнены, функционал протестирован.
+
+================================================================================
+File: manage.py
+--------------------------------------------------------------------------------
+#!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
+import os
+import sys
+
+
+def main():
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    try:
+        from django.core.management import execute_from_command_line # type: ignore
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+    execute_from_command_line(sys.argv)
+
+
+if __name__ == '__main__':
+    main()
+
+
+================================================================================
+File: project_summary.txt
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: pupu.py
+--------------------------------------------------------------------------------
+# Необходимо написать функцию которая будет производить сумму двух чисел.
+def sum_two_numbers(a, b):
+    return a + b
+
+#print(sum_two_numbers(5, 3))
+
+#Функция фибаначи с выводом в терминал
+def fibonacci(n):
+    if n <= 0:
+        print("Ввод должен быть положительным числом")
+        return None
+    elif n == 1:
+        print(0)
+        return 0
+    elif n == 2:
+        print(1)
+        return 1
+    else:
+        fib_sequence = [0, 1]
+        for _ in range(2, n):
+            next_value = fib_sequence[-1] + fib_sequence[-2]
+            fib_sequence.append(next_value)
+            print(next_value)
+        # Возвращаем последний элемент
+        print(fib_sequence[-1])
+        return fib_sequence[-1]
+
+# Пример вызова функции и печати результата
+print(fibonacci(10))
+
+
+def count_char(sentence, char):
+    if len(char) != 1:
+        raise ValueError("Второй аргумент должен быть одним символом.")
+    return sentence.count(char)
+
+# Пример вызова функции и печати результата
+print(count_char("пример строки", "и"))
+
+
+================================================================================
+File: README.md
+--------------------------------------------------------------------------------
+﻿# Инструкция по настройке и запуску проекта
+
+## 1. Установка зависимостей
+Убедитесь, что все необходимые зависимости установлены. Выполните команду:
+```bash
+pip install -r requirements.txt
+```
+
+## 2. Настройка базы данных
+Проект использует MS SQL Server. Для подключения к базе данных настройте следующие переменные окружения в файле `.env`:
+- `MS_SQL_LOGIN`: Логин для подключения к базе данных.
+- `MS_SQL_PASS`: Пароль для подключения.
+- `MS_SQL_SERVER`: Адрес сервера (например, `ULTRASERVER\SQLEXPRESS`).
+- `MS_SQL_DB`: Название базы данных (например, `ProjectBV426`).
+- `MS_SQL_DB_FIRST_CONNECT`: Промежуточная база данных (обычно `master`).
+- `MS_SQL_DRIVER`: Драйвер для подключения (например, `ODBC Driver 17 for SQL Server`).
+
+> **Важно:** Убедитесь, что драйвер ODBC установлен на вашей системе. Если нет, скачайте его [здесь](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16).
+
+## 3. Запуск миграций
+Выполните следующие команды для создания базы данных и применения миграций:
+
+1. **Создание базы данных** (если она не существует):
+   ```bash
+   python manage.py ccdb
+   ```
+   Эта команда создаст базу данных, указанную в переменной `MS_SQL_DB`.
+
+2. **Применение миграций**:
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+## 4. Создание суперпользователя
+Для доступа к административной панели Django создайте пользователя с правами администратора:
+```bash
+python manage.py ccsu
+```
+После выполнения команды укажите логин и пароль. Админ-панель будет доступна по адресу:
+```
+http://127.0.0.1:8000/admin
+```
+
+## 5. Запуск сервера разработки
+Запустите сервер командой:
+```bash
+python manage.py runserver
+```
+По умолчанию сервер будет доступен по адресу:
+```
+http://127.0.0.1:8000/
+```
+
+---
+
+### Порядок использования команд:
+1. `python manage.py ccdb` — создает базу данных, если она не существует.
+2. `python manage.py ccsu` — создает суперпользователя для доступа к админ-панели.
+3. `python manage.py makemigrations` — создает миграции для моделей.
+4. `python manage.py migrate` — применяет миграции к базе данных.
+5. `python manage.py runserver` — запускает сервер разработки.
+
+---
+
+### Дополнительная информация
+- **Админ-панель**: Доступна по URL `/admin`.
+- **Часовой пояс**: Настроен на `Europe/Moscow`.
+- **Язык**: Русский (`ru-ru`).
+
+Если возникнут вопросы или проблемы, обратитесь к разработчику.
+
+---
+
+# Последние обновления
+- [Changelog](CHANGELOG.md)
+
+================================================================================
+File: cards\admin.py
+--------------------------------------------------------------------------------
+from django.contrib import admin
+from .models import CardTemplate, CardInstance
+
+@admin.register(CardTemplate)
+class CardTemplateAdmin(admin.ModelAdmin):
+    list_display = ('name', 'creator', 'is_public')
+    search_fields = ('name',)
+
+admin.site.register(CardInstance)
+
+
+================================================================================
+File: cards\apps.py
+--------------------------------------------------------------------------------
+from django.apps import AppConfig
+
+class CardsConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'cards'
+
+
+================================================================================
+File: cards\constants.py
+--------------------------------------------------------------------------------
+from django.db import models
+
+class UserRoles(models.TextChoices):
+    """Роли пользователей."""
+    GUEST = 'GUEST', 'Гость'
+    USER = 'USER', 'Пользователь'
+    CREATOR = 'CREATOR', 'Создатель'
+    EDITOR = 'EDITOR', 'Редактор'
+    MODERATOR = 'MODERATOR', 'Модератор'
+    ADMIN = 'ADMIN', 'Администратор'
+
+================================================================================
+File: cards\forms.py
+--------------------------------------------------------------------------------
+import json
+from django import forms
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+from .models import CardTemplate
+from django.core.validators import MinLengthValidator
+
+
+class CardTemplateForm(forms.ModelForm):
+    class Meta:
+        model = CardTemplate
+        fields = ['name', 'description', 'fields', 'is_public', 'is_favorite']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': _('Введите название шаблона')
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': _('Краткое описание шаблона...'),
+                'rows': 3,
+            }),
+            'fields': forms.Textarea(attrs={
+                'class': 'form-control font-monospace',
+                'placeholder': _('JSON-структура полей'),
+                'rows': 8,
+            }),
+            'is_public': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'is_favorite': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
+        labels = {
+            'fields': _('JSON-структура'),
+            'is_public': _('Публичный доступ'),
+        }
+        help_texts = {
+            'fields': _('Пример: {"field1": {"type": "text", "label": "Название"}}')
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['description'].required = False
+        
+        # Добавляем валидацию минимальной длины для имени
+        self.fields['name'].validators = [
+            MinLengthValidator(
+                3,
+                message=_('Название должно содержать минимум 3 символа')
+            )
+        ]
+
+    def clean_fields(self):
+        """Основная валидация JSON-поля."""
+        fields_data = self.cleaned_data.get('fields', {})
+        
+        # Если данные уже в dict (например, из админки)
+        if isinstance(fields_data, dict):
+            return fields_data
+
+        try:
+            parsed_data = json.loads(fields_data)
+            if not isinstance(parsed_data, dict):
+                raise ValidationError(_("Требуется JSON-объект (словарь)"))
+            return parsed_data
+        except json.JSONDecodeError as e:
+            raise ValidationError(
+                _("Ошибка в JSON: %(error)s") % {'error': str(e)}
+            )
+
+    def clean(self):
+        """Дополнительная валидация всей формы."""
+        cleaned_data = super().clean()
+        
+        # Автоматически вызываем clean_fields()
+        if 'fields' in self.errors:
+            return cleaned_data
+            
+        # Дополнительные проверки структуры JSON
+        fields_data = cleaned_data.get('fields', {})
+        if not fields_data:
+            raise ValidationError({'fields': _("Структура полей не может быть пустой")})
+            
+        # Проверка минимального количества полей
+        if len(fields_data) < 1:
+            raise ValidationError(
+                {'fields': _("Должно быть хотя бы одно поле")}
+            )
+            
+        return cleaned_data
+
+================================================================================
+File: cards\models.py
+--------------------------------------------------------------------------------
+from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+from django.core.validators import MinLengthValidator
+from users.models import User
+from typing import Dict, Any
+from django.urls import reverse
+
+class FieldType(models.TextChoices):
+    """Типы полей для шаблонов карточек."""
+    TEXT = 'text', _('Текст')
+    TEXTAREA = 'textarea', _('Многострочный текст')
+    IMAGE = 'image', _('Изображение')
+    NUMBER = 'number', _('Число')
+    SELECT = 'select', _('Выпадающий список')
+
+def validate_fields_structure(value: Dict[str, Any]) -> None:
+    """
+    Валидатор структуры JSON-поля fields.
+    
+    Args:
+        value: Словарь с конфигурацией полей
+        
+    Raises:
+        ValidationError: Если структура не соответствует требованиям
+    
+    Example:
+        {
+            "term": {
+                "type": "text", 
+                "label": "Термин",
+                "required": True
+            },
+            "image": {
+                "type": "image",
+                "label": "Изображение",
+                "max_size": 2048
+            }
+        }
+    """
+    if not isinstance(value, dict):
+        raise ValidationError(_("Основная структура должна быть словарем."))
+
+    for field_name, config in value.items():
+        if not isinstance(config, dict):
+            raise ValidationError(
+                _("Поле '%(field)s' должно быть словарем.") % {'field': field_name}
+            )
+        
+        # Проверка обязательных полей
+        required_fields = {'type', 'label'}
+        missing_fields = required_fields - config.keys()
+        if missing_fields:
+            raise ValidationError(
+                _("Поле '%(field)s' не содержит обязательные ключи: %(missing)s") % {
+                    'field': field_name,
+                    'missing': ', '.join(missing_fields)
+                }
+            )
+        
+        # Проверка типа поля
+        field_type = config.get('type')
+        if field_type not in FieldType.values:
+            raise ValidationError(
+                _("Недопустимый тип '%(type)s' для поля '%(field)s'. Допустимые типы: %(allowed)s") % {
+                    'type': field_type,
+                    'field': field_name,
+                    'allowed': ', '.join(FieldType.values)
+                }
+            )
+        
+        # Дополнительные проверки для специфичных типов
+        if field_type == FieldType.SELECT and 'options' not in config:
+            raise ValidationError(
+                _("Поле '%(field)s' типа 'select' требует указания options") % {'field': field_name}
+            )
+
+
+class CardTemplate(models.Model):
+    """
+    Шаблон для создания карточек с настраиваемой структурой полей.
+    
+    Attributes:
+        name: Название шаблона (макс. 100 символов)
+        creator: Пользователь, создавший шаблон
+        fields: Конфигурация полей в JSON-формате
+        preview_image: Превью изображение шаблона (бэклог)
+        is_public: Флаг публичного доступа
+        description: Описание шаблона
+        is_favorite: Флаг избранного
+        editors: Пользователи с правами редактирования
+    """
+    
+    name = models.CharField(
+        max_length=100,
+        verbose_name=_("Название шаблона"),
+        help_text=_("Максимальная длина — 100 символов"),
+        validators=[MinLengthValidator(3)]
+    )
+    
+    creator = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name=_("Создатель"),
+        related_name="templates",
+        help_text=_("Пользователь, создавший этот шаблон")
+    )
+    
+    fields = models.JSONField(
+        verbose_name=_("Поля шаблона"),
+        validators=[validate_fields_structure],
+        help_text=_("JSON-структура с описанием полей карточки")
+    )
+    
+    #preview_image = models.ImageField(
+    #    upload_to='card_templates/previews/%Y/%m/%d/',
+    #    verbose_name=_("Превью шаблона"),
+    #    blank=True,
+    #    null=True,
+    #    help_text=_("Изображение для предпросмотра шаблона")
+    #)
+    
+    is_public = models.BooleanField(
+        default=False,
+        verbose_name=_("Публичный доступ"),
+        help_text=_("Доступен ли шаблон всем пользователям")
+    )
+    
+    description = models.TextField(
+        verbose_name=_("Описание"),
+        blank=True,
+        help_text=_("Подробное описание шаблона")
+    )
+    
+    is_favorite = models.BooleanField(
+        default=False,
+        verbose_name=_("Избранное"),
+        help_text=_("Помечен ли шаблон как избранный")
+    )
+    
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name=_("Активный"),
+        help_text=_("Активен ли шаблон (мягкое удаление)")
+    )
+    
+    editors = models.ManyToManyField(
+        User,
+        related_name="editable_templates",
+        verbose_name=_("Редакторы"),
+        blank=True,
+        help_text=_("Пользователи с правами редактирования")
+    )
+    
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_("Дата создания")
+    )
+    
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Дата обновления")
+    )
+    
+    version = models.PositiveIntegerField(
+        default=1,
+        verbose_name="Версия",
+        help_text="Текущая версия шаблона"
+    )
+
+    class Meta:
+        verbose_name = _("Шаблон карточки")
+        verbose_name_plural = _("Шаблоны карточек")
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["name"]),
+            models.Index(fields=["is_public", "is_active"]),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'creator'],
+                name='unique_template_name_per_creator'
+            )
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.name} (ID: {self.id})"
+    
+    def clean(self) -> None:
+        """Дополнительная валидация модели перед сохранением."""
+        super().clean()
+        validate_fields_structure(self.fields)
+        if len(self.name.strip()) < 3:
+            raise ValidationError(
+                _("Название шаблона должно содержать минимум 3 символа")
+            )
+    
+    def save(self, *args, **kwargs):
+        if self.pk:
+            # Инкремент версии при изменениях
+            original = CardTemplate.objects.get(pk=self.pk)
+            if original.fields != self.fields:
+                self.version += 1
+        super().save(*args, **kwargs)
+
+
+class CardInstance(models.Model):
+    """
+    Конкретный экземпляр карточки, созданный по шаблону.
+    
+    Attributes:
+        template: Ссылка на шаблон
+        data: Данные карточки в JSON-формате
+        created_by: Пользователь, создавший карточку
+    """
+    
+    template = models.ForeignKey(
+        CardTemplate,
+        on_delete=models.CASCADE,
+        related_name="instances",
+        verbose_name=_("Шаблон")
+    )
+    
+    data = models.JSONField(
+        verbose_name=_("Данные карточки"),
+        help_text=_("Заполненные данные согласно структуре шаблона")
+    )
+    
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=_("Создатель"),
+        related_name="created_cards"
+    )
+    
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_("Дата создания")
+    )
+    
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Дата обновления")
+    )
+    
+    meta_data = models.JSONField(
+        verbose_name=_("Метаданные"),
+        blank=True,
+        null=True,
+        default=dict,
+        help_text=_("Дополнительные данные, например, источник, версия шаблона и др.")
+    )
+
+    class Meta:
+        verbose_name = _("Экземпляр карточки")
+        verbose_name_plural = _("Экземпляры карточек")
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["template", "created_at"]),
+        ]
+
+    def __str__(self) -> str:
+        return f"Карточка {self.id} (Шаблон: {self.template_id})"
+    
+    def clean(self) -> None:
+        """Валидация данных карточки согласно шаблону."""
+        super().clean()
+        if not isinstance(self.data, dict):
+            raise ValidationError(
+                _("Данные карточки должны быть в формате JSON-объекта")
+            )
+
+    def get_absolute_url(self):
+        return reverse('cards:instance_detail', kwargs={'pk': self.pk})
+
+================================================================================
+File: cards\services.py
+--------------------------------------------------------------------------------
+from .models import CardTemplate
+from .constants import UserRoles
+
+class TemplatePermissionService:
+    """Сервис для централизованной проверки прав доступа."""
+
+    @staticmethod
+    def can_view_template(user, template) -> bool:
+        """Может ли пользователь просматривать шаблон."""
+        if template.is_public:
+            return True
+        if not user.is_authenticated:
+            return False
+        return (user.role in [UserRoles.ADMIN, UserRoles.MODERATOR] or 
+                template.creator == user or 
+                user in template.editors.all())
+
+    @staticmethod
+    def can_edit_template(user, template) -> bool:
+        """Может ли пользователь редактировать шаблон."""
+        if not user.is_authenticated:
+            return False
+        return (user.role in [UserRoles.ADMIN, UserRoles.MODERATOR] or 
+                template.creator == user or 
+                user in template.editors.all())
+
+    @staticmethod
+    def can_delete_template(user, template) -> bool:
+        """Может ли пользователь удалять шаблон."""
+        return user.is_authenticated and (
+            user.role == UserRoles.ADMIN or 
+            template.creator == user
+        )
+
+    @staticmethod
+    def can_add_card_instance(user, template) -> bool:
+        """Может ли пользователь добавлять карточки к шаблону."""
+        return TemplatePermissionService.can_edit_template(user, template)
+
+================================================================================
+File: cards\urls.py
+--------------------------------------------------------------------------------
+from django.urls import path
+from . import views
+
+app_name = 'cards'
+
+urlpatterns = [
+    path('', views.card_template_list, name='template_list'),
+    path('create/', views.create_template, name='create_template'),
+    path('<int:pk>/', views.template_detail, name='template_detail'),
+    path('<int:pk>/edit/', views.template_update, name='template_update'),
+    path('<int:pk>/delete/', views.template_delete, name='template_delete'),
+    path('<int:pk>/favorite/', views.toggle_favorite, name='toggle_favorite'),
+    path('<int:pk>/publish/', views.publish_template, name='publish_template'),
+    path('<int:pk>/unpublish/', views.unpublish_template, name='unpublish_template'),
+    path('<int:template_id>/create-card/', views.create_card_instance, name='create_card_instance'),
+    path('instances/<int:pk>/', views.card_instance_detail, name='instance_detail'),
+]
+
+
+================================================================================
+File: cards\validators.py
+--------------------------------------------------------------------------------
+from django.core.exceptions import ValidationError
+
+def validate_image_config(config: dict) -> None:
+    """Проверяет конфигурацию поля типа 'image'."""
+    allowed_formats = ["png", "jpg", "jpeg"]
+    if config.get("type") == "image":
+        if "allowed_formats" in config:
+            if not set(config["allowed_formats"]).issubset(allowed_formats):
+                raise ValidationError(f"Допустимые форматы: {allowed_formats}")
+
+================================================================================
+File: cards\views.py
+--------------------------------------------------------------------------------
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from django.core.exceptions import PermissionDenied, ValidationError
+from django.http import HttpRequest, HttpResponse, JsonResponse, HttpResponseForbidden
+from .models import CardTemplate, CardInstance
+from .forms import CardTemplateForm
+import logging
+from django.db import transaction
+from django.views.decorators.http import require_POST
+
+logger = logging.getLogger(__name__)
+
+@login_required
+def card_template_list(request: HttpRequest) -> HttpResponse:
+    """Отображает список шаблонов карточек."""
+    templates = CardTemplate.objects.filter(
+        is_active=True
+    ).select_related("creator")
+    return render(request, 'cards/template_list.html', {'templates': templates})
+
+
+@login_required
+def create_template(request: HttpRequest) -> HttpResponse:
+    """Создание нового шаблона."""
+    if request.method == 'POST':
+        form = CardTemplateForm(request.POST)
+        if form.is_valid():
+            try:
+                template = form.save(commit=False)
+                template.creator = request.user
+                template.save()
+                logger.info(f"Создан шаблон {template.name}")
+                return redirect('cards:template_list')
+            except Exception as e:
+                logger.error(f"Ошибка создания шаблона: {e}")
+                form.add_error(None, "Ошибка сохранения")
+    else:
+        form = CardTemplateForm()
+    return render(request, 'cards/template_form.html', {'form': form})
+
+
+@login_required
+def template_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    """Просмотр деталей шаблона."""
+    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+    return render(request, 'cards/template_detail.html', {
+        'template': template,
+        'is_owner': request.user == template.creator
+    })
+
+
+@login_required
+def template_update(request: HttpRequest, pk: int) -> HttpResponse:
+    """Редактирование шаблона."""
+    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+
+    if not (request.user == template.creator or request.user.is_staff):
+        raise PermissionDenied("Нет прав на редактирование")
+
+    if request.method == 'POST':
+        form = CardTemplateForm(request.POST, instance=template)
+        if form.is_valid():
+            form.save()
+            return redirect('cards:template_detail', pk=pk)
+    else:
+        form = CardTemplateForm(instance=template)
+
+    return render(request, 'cards/template_form.html', {'form': form})
+
+
+@login_required
+def template_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    """Мягкое удаление шаблона."""
+    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+
+    if not (request.user == template.creator or request.user.is_staff):
+        raise PermissionDenied("Нет прав на удаление")
+
+    template.is_active = False
+    template.save()
+    return JsonResponse({'success': True, 'message': 'Шаблон удален'})
+
+
+@require_POST
+@login_required
+def toggle_favorite(request, pk):
+    """Переключение избранного статуса."""
+    template = get_object_or_404(CardTemplate, pk=pk, is_active=True)
+
+    if template.creator != request.user:
+        return JsonResponse({'error': 'Доступ запрещен'}, status=403)
+
+    template.is_favorite = not template.is_favorite
+    template.save()
+    return JsonResponse({'is_favorite': template.is_favorite})
+
+
+def parse_form_data(post_data, fields_schema):
+    """Парсинг и предварительная обработка данных формы"""
+    result = {
+        'card_data': {},
+        'tags': [tag.strip() for tag in post_data.get('tags', '').split(',') if tag.strip()]
+    }
+
+    for field_name in fields_schema.keys():
+        field_config = fields_schema[field_name]
+        value = post_data.get(field_name)
+
+        # Преобразование типов данных
+        if field_config.get('type') == 'number':
+            try:
+                result['card_data'][field_name] = float(
+                    value) if '.' in value else int(value)
+            except (TypeError, ValueError):
+                result['card_data'][field_name] = None
+        elif field_config.get('type') == 'checkbox':
+            result['card_data'][field_name] = bool(value)
+        else:
+            result['card_data'][field_name] = value.strip() if value else None
+
+    return result
+
+
+def validate_card_data(form_data, fields_schema):
+    """Валидация данных по схеме шаблона"""
+    errors = {}
+
+    for field_name, config in fields_schema.items():
+        value = form_data['card_data'].get(field_name)
+        if value is None:
+            continue  # Если поле необязательное
+        field_label = config.get('label', field_name)
+
+        # Проверка обязательных полей
+        if config.get('required') and not value:
+            errors[field_name] = f'{field_label} - обязательное поле'
+            continue
+        
+        # Валидация по типу поля
+        field_type = config.get('type', 'text')
+
+        if field_type == 'number':
+            if not isinstance(value, (int, float)):
+                errors[field_name] = 'Требуется числовое значение'
+
+        elif field_type == 'select':
+            options = [str(opt.get('value', opt))
+                       for opt in config.get('options', [])]
+            if value not in options:
+                errors[field_name] = 'Недопустимое значение для выбора'
+
+        elif field_type == 'checkbox':
+            if not isinstance(value, bool):
+                errors[field_name] = 'Некорректное значение флажка'
+
+    if errors:
+        raise ValidationError({'fields': errors})
+
+
+@require_POST
+@login_required
+@transaction.atomic
+def create_card_instance(request, template_id):
+    """
+    Создание экземпляра карточки с валидацией по шаблону
+    """
+    try:
+        # 1. Получение шаблона
+        template = CardTemplate.objects.select_related('creator').get(
+            pk=template_id,
+            is_active=True
+        )
+
+        # 2. Проверка прав доступа
+        if not (request.user == template.creator or
+                request.user.has_perm('cards.add_cardinstance')):
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Недостаточно прав для создания карточки'
+            }, status=403)
+
+        # 3. Парсинг данных формы
+        form_data = parse_form_data(request.POST, template.fields)
+
+        # 4. Валидация данных
+        validate_card_data(form_data, template.fields)
+
+        # 5. Создание карточки
+        card = CardInstance.objects.create(
+            template=template,
+            data=form_data['card_data'],
+            created_by=request.user,
+            meta_data={
+                'tags': form_data.get('tags', []),
+                'created_via': 'web_form'
+            }
+        )
+
+        return JsonResponse({
+            'status': 'success',
+            'card_id': card.id,
+            'preview_url': card.get_absolute_url()
+        })
+
+    except CardTemplate.DoesNotExist:
+        return JsonResponse({
+            'status': 'error',
+            'message': 'Шаблон не найден или удален'
+        }, status=404)
+
+    except ValidationError as e:
+        return JsonResponse({
+            'status': 'validation_error',
+            'errors': e.message_dict
+        }, status=400)
+
+    except Exception as e:
+        logger.error(f"Error creating card: {str(e)}")
+        return JsonResponse({
+            'status': 'error',
+            'message': 'Внутренняя ошибка сервера'
+        }, status=500)
+
+
+@login_required
+def card_instance_detail(request, pk):
+    return HttpResponse(f"Детальный просмотр карточки #{pk} (будет позже)")
+
+@login_required
+def publish_template(request, pk):
+    """
+    Заглушка: Сделать шаблон публичным.
+    """
+    return JsonResponse({'status': 'stub', 'message': 'Публикация временно не реализована.'})
+
+
+@login_required
+def unpublish_template(request, pk):
+    """
+    Заглушка: Снять шаблон с публикации.
+    """
+    return JsonResponse({'status': 'stub', 'message': 'Снятие с публикации временно не реализовано.'})
+
+
+================================================================================
+File: cards\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: cards\migrations\0001_initial.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-04-19 00:38
+
+import cards.models
+import django.core.validators
+import django.db.models.deletion
+from django.conf import settings
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='CardTemplate',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(help_text='Максимальная длина — 100 символов', max_length=100, validators=[django.core.validators.MinLengthValidator(3)], verbose_name='Название шаблона')),
+                ('fields', models.JSONField(help_text='JSON-структура с описанием полей карточки', validators=[cards.models.validate_fields_structure], verbose_name='Поля шаблона')),
+                ('preview_image', models.ImageField(blank=True, help_text='Изображение для предпросмотра шаблона', null=True, upload_to='card_templates/previews/%Y/%m/%d/', verbose_name='Превью шаблона')),
+                ('is_public', models.BooleanField(default=False, help_text='Доступен ли шаблон всем пользователям', verbose_name='Публичный доступ')),
+                ('description', models.TextField(blank=True, help_text='Подробное описание шаблона', verbose_name='Описание')),
+                ('is_favorite', models.BooleanField(default=False, help_text='Помечен ли шаблон как избранный', verbose_name='Избранное')),
+                ('is_active', models.BooleanField(default=True, help_text='Активен ли шаблон (мягкое удаление)', verbose_name='Активный')),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
+                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
+                ('creator', models.ForeignKey(help_text='Пользователь, создавший этот шаблон', on_delete=django.db.models.deletion.CASCADE, related_name='templates', to=settings.AUTH_USER_MODEL, verbose_name='Создатель')),
+                ('editors', models.ManyToManyField(blank=True, help_text='Пользователи с правами редактирования', related_name='editable_templates', to=settings.AUTH_USER_MODEL, verbose_name='Редакторы')),
+            ],
+            options={
+                'verbose_name': 'Шаблон карточки',
+                'verbose_name_plural': 'Шаблоны карточек',
+                'ordering': ['-created_at'],
+            },
+        ),
+        migrations.CreateModel(
+            name='CardInstance',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('data', models.JSONField(help_text='Заполненные данные согласно структуре шаблона', verbose_name='Данные карточки')),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
+                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
+                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_cards', to=settings.AUTH_USER_MODEL, verbose_name='Создатель')),
+                ('template', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='instances', to='cards.cardtemplate', verbose_name='Шаблон')),
+            ],
+            options={
+                'verbose_name': 'Экземпляр карточки',
+                'verbose_name_plural': 'Экземпляры карточек',
+                'ordering': ['-created_at'],
+            },
+        ),
+        migrations.AddIndex(
+            model_name='cardtemplate',
+            index=models.Index(fields=['name'], name='cards_cardt_name_6a52e5_idx'),
+        ),
+        migrations.AddIndex(
+            model_name='cardtemplate',
+            index=models.Index(fields=['is_public', 'is_active'], name='cards_cardt_is_publ_64c6c8_idx'),
+        ),
+        migrations.AddConstraint(
+            model_name='cardtemplate',
+            constraint=models.UniqueConstraint(fields=('name', 'creator'), name='unique_template_name_per_creator'),
+        ),
+        migrations.AddIndex(
+            model_name='cardinstance',
+            index=models.Index(fields=['template', 'created_at'], name='cards_cardi_templat_7083e9_idx'),
+        ),
+    ]
+
+
+================================================================================
+File: cards\migrations\0002_remove_cardtemplate_preview_image.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-04-22 01:53
+
+from django.db import migrations
+
+def remove_image_files(apps, schema_editor):
+    CardTemplate = apps.get_model('cards', 'CardTemplate')
+    for template in CardTemplate.objects.exclude(preview_image=''):
+        template.preview_image.delete(save=False)
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('cards', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.RemoveField(
+            model_name='cardtemplate',
+            name='preview_image',
+        ),
+        migrations.RunPython(remove_image_files),
+    ]
+
+
+================================================================================
+File: cards\migrations\0003_cardtemplate_version.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-04-22 15:50
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('cards', '0002_remove_cardtemplate_preview_image'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='cardtemplate',
+            name='version',
+            field=models.PositiveIntegerField(default=1, help_text='Текущая версия шаблона', verbose_name='Версия'),
+        ),
+    ]
+
+
+================================================================================
+File: cards\migrations\0004_cardinstance_meta_data.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-04-22 16:34
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('cards', '0003_cardtemplate_version'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='cardinstance',
+            name='meta_data',
+            field=models.JSONField(blank=True, default=dict, help_text='Дополнительные данные, например, источник, версия шаблона и др.', null=True, verbose_name='Метаданные'),
+        ),
+    ]
+
+
+================================================================================
+File: cards\migrations\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: cards\static\css\styles.css
+--------------------------------------------------------------------------------
+/* Основные стили */
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Адаптивные изображения */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.toast {
+    min-width: 300px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.toast-header {
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.toast.bg-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.toast.bg-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.modal .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.modal .btn-danger:hover {
+    background-color: #c82333;
+}
+
+.modal-header.bg-danger {
+    background-color: #dc3545;
+}
+
+================================================================================
+File: cards\static\js\scripts.js
+--------------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  // Делегирование кликов для избранного (звезда)
+  document.body.addEventListener('click', async (e) => {
+    const button = e.target.closest('.favorite-toggle');
+    if (!button) return;
+      const templateId = button.dataset.templateId;
+      const url = `/cards/${templateId}/toggle-favorite/`;
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+          'X-CSRFToken': getCSRFToken(),
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({}) // Добавлено
+        });
+        const data = await response.json();
+        if (data.is_favorite !== undefined) {
+          button.classList.toggle('active');
+          const icon = button.querySelector('i');
+        if (icon) {
+          icon.className = data.is_favorite ? 'bi bi-star-fill' : 'bi bi-star';
+        }
+        } else {
+          showToast('Ошибка', 'Не удалось изменить избранное', 'danger');
+        }
+      } catch (error) {
+        console.error(error);
+        showToast('Ошибка', 'Ошибка соединения', 'danger');
+      }
+    });
+// Модальное удаление
+const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+const deleteForm = document.getElementById('deleteForm');
+window.showDeleteModal = function(templateId) {
+    deleteForm.action = `/cards/${templateId}/delete/`;
+    const modal = bootstrap.Modal.getOrCreateInstance(deleteConfirmModal);
+    modal.show();
+};
+// Обработчик формы удаления
+deleteForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Блокировка кнопки отправки для предотвращения повторных запросов
+    const submitButton = deleteForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
+    try {
+      const templateIdMatches = deleteForm.action.match(/\/cards\/(\d+)\/delete\//);
+      if (!templateIdMatches) {
+        console.error('Некорректный URL для удаления');
+            showToast('Ошибка', 'Некорректный идентификатор шаблона', 'danger');
+        return;
+      }
+      const templateId = templateIdMatches[1];
+        const response = await fetch(deleteForm.action, {
+            method: 'POST',
+            headers: {
+          'X-CSRFToken': getCSRFToken(),
+                'Content-Type': 'application/json'
+            }
+        });
+        // Обработка ответа
+            const data = await response.json();
+        if (response.ok) {
+            if (data.success) {
+                // Закрываем модальное окно
+                const modalInstance = bootstrap.Modal.getInstance(deleteConfirmModal);
+                modalInstance?.hide();
+                // Удаляем карточку из DOM
+                const cardElement = document.querySelector(`[data-template-id="${templateId}"]`);
+                    if (cardElement) {
+                        const colElement = cardElement.closest('.col');
+                        if (colElement) {
+                            colElement.remove();
+                        } else {
+                            console.error('Родительская колонка не найдена');
+                        showToast('Ошибка', 'Ошибка обновления интерфейса', 'warning');
+                        }
+                } else {
+                    console.error('Карточка не найдена в списке', templateId);
+                    showToast('Ошибка', 'Карточка не найдена на странице', 'warning');
+                    // Перенаправляем на список карточек при ошибке
+                    window.location.href = '/cards/';
+                    return;
+                }
+                showToast('Успешно!', 'Шаблон успешно удален', 'success');
+                // Проверяем, остались ли карточки
+                const remainingCards = document.querySelectorAll('[data-template-id]');
+                if (remainingCards.length === 0) {
+                    window.location.href = '/cards/';
+                }
+            } else {
+                showToast('Ошибка', data.message || 'Неизвестная ошибка', 'danger');
+            }
+        } else {
+            // Обработка статусов ошибок
+            switch (response.status) {
+                case 403:
+                    showToast('Ошибка', 'У вас нет прав на удаление этого шаблона', 'danger');
+                    break;
+                case 404:
+                    showToast('Ошибка', 'Шаблон не найден', 'danger');
+                    // Перенаправляем при отсутствии карточки
+                    window.location.href = '/cards/';
+                    break;
+                default:
+                    showToast('Ошибка', data.message || 'Неизвестная ошибка сервера', 'danger');
+            }
+        }
+    } catch (error) {
+        console.error('Ошибка при удалении:', error);
+        showToast('Ошибка', 'Ошибка соединения с сервером', 'danger');
+    } finally {
+        if (submitButton) {
+            submitButton.disabled = false;
+        }
+    }
+});
+  // Обработка формы создания карточки
+const cardForm = document.getElementById('cardCreateForm');
+const cardPreview = document.getElementById('cardPreview');
+if (cardForm && cardPreview) {
+    // Кэшируем элементы превью по data-field
+    const previewFields = {};
+    cardPreview.querySelectorAll('[data-field]').forEach(field => {
+      const fieldName = field.dataset.field;
+      previewFields[fieldName] = field;
+    });
+    // Функция для обработки файловых полей
+  function handleFileUpload(fieldName, file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const preview = previewFields[fieldName];
+      if (preview) {
+        preview.src = e.target.result;
+      } else {
+        console.error(`Превью для поля ${fieldName} не найдено`);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+  // Динамическое обновление превью
+  cardForm.addEventListener('input', function(e) {
+    const target = e.target;
+    const fieldName = target.name;
+    if (target.type === 'file') {
+        if (target.files && target.files[0]) {
+      handleFileUpload(fieldName, target.files[0]);
+        }
+      return;
+    }
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+      const previewField = previewFields[fieldName];
+    if (previewField) {
+      if (previewField.tagName === 'INPUT' && previewField.type === 'checkbox') {
+        previewField.checked = value;
+      } else {
+        previewField.textContent = value;
+      }
+    }
+  });
+  // Отправка формы
+  cardForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+      const submitBtn = cardForm.querySelector('button[type="submit"]');
+      const formData = new FormData(cardForm);
+    try {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="spinner-border spinner-border-sm" role="status"></span>
+        Сохранение...
+      `;
+      const data = Object.fromEntries(formData.entries());
+        const response = await fetch(cardForm.action, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken()
+        },
+          body: JSON.stringify(data)
+      });
+      const result = await response.json();
+      if (response.ok && result.status === 'success') {
+        showToast('Успех!', 'Карточка успешно создана', 'success');
+          cardForm.reset();
+          Object.values(previewFields).forEach(field => {
+          if (field.tagName === 'INPUT' && field.type === 'checkbox') {
+            field.checked = false;
+            } else {
+              field.textContent = '';
+          }
+        });
+      } else {
+        const errorMsg = result.errors 
+          ? Object.values(result.errors).join(', ') 
+          : result.message || 'Неизвестная ошибка';
+        showToast('Ошибка!', errorMsg, 'danger');
+      }
+    } catch (error) {
+      showToast('Ошибка!', 'Ошибка соединения', 'danger');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="bi bi-save"></i> Сохранить карточку';
+    }
+  });
+}
+});
+// Функция для получения CSRF токена с кэшированием
+let cachedCSRFToken = null;
+function getCSRFToken() {
+  if (cachedCSRFToken) return cachedCSRFToken;
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      const trimmed = cookie.trim();
+      if (trimmed.startsWith('csrftoken=')) {
+        cookieValue = decodeURIComponent(trimmed.slice('csrftoken'.length + 1));
+        break;
+      }
+    }
+  }
+  cachedCSRFToken = cookieValue;
+  return cookieValue;
+}
+// Функция Toast-уведомлений (объединена и переработана)
+function showToast(title, message, type) {
+  const toastContainer = document.getElementById('toastContainer') || createToastContainer();
+  const toast = document.createElement('div');
+  toast.className = `toast fade show bg-${type}`;
+  toast.style.position = 'relative';
+  toast.innerHTML = `
+    <div class="toast-header">
+      <strong class="me-auto">${title}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">${message}</div>
+  `;
+  toastContainer.appendChild(toast);
+  new bootstrap.Toast(toast).show();
+}
+function createToastContainer() {
+  const container = document.createElement('div');
+  container.id = 'toastContainer';
+  container.style.position = 'fixed';
+  container.style.top = '20px';
+  container.style.right = '20px';
+  container.style.zIndex = '9999';
+  document.body.appendChild(container);
+  return container;
+}
+
+================================================================================
+File: cards\templates\cards\template_detail.html
+--------------------------------------------------------------------------------
+{% extends 'base.html' %}
+{% load static %}
+{% load card_render %}
+
+{% block title %}{{ template.name }} - Детали шаблона{% endblock %}
+
+{% block content %}
+<div class="container-lg mt-4">
+    <!-- Шапка с управлением -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h2 mb-0">
+                <i class="bi bi-file-earmark-richtext text-primary me-2"></i>
+                {{ template.name }}
+                <small class="text-muted fs-4">{{ template.version }}</small>
+            </h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'cards:template_list' %}">Шаблоны</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ template.name }}</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="btn-group">
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" 
+                        type="button" 
+                        data-bs-toggle="dropdown">
+                    <i class="bi bi-gear"></i> Управление
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    {% if is_owner %}
+                    <li>
+                        <a class="dropdown-item" 
+                           href="{% url 'cards:template_update' template.pk %}">
+                            <i class="bi bi-pencil me-2"></i>Редактировать
+                        </a>
+                    </li>
+                    <li>
+                        <button class="dropdown-item text-danger" 
+                                onclick="showDeleteModal({{ template.pk }})">
+                            <i class="bi bi-trash me-2"></i>Удалить
+                        </button>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    {% endif %}
+                    <li>
+                        <button class="dropdown-item" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#exportModal">
+                            <i class="bi bi-download me-2"></i>Экспорт
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="row g-4">
+        <!-- Левая колонка - Форма создания -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-success text-white">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-plus-circle me-2"></i>Создать карточку
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form id="cardCreateForm" 
+                          method="post" 
+                          action="{% url 'cards:create_card_instance' template.pk %}"
+                          enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <!-- Динамические поля -->
+                        {% render_card_fields template.fields form_mode=True %}
+                        
+                        <!-- Дополнительные поля -->
+                        <div class="mt-4 pt-3 border-top">
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    <i class="bi bi-tags me-1"></i>Теги
+                                </label>
+                                <input type="text" 
+                                       name="tags" 
+                                       class="form-control" 
+                                       placeholder="Введите теги через запятую">
+                            </div>
+                        </div>
+
+                        <!-- Кнопки отправки -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <button type="reset" class="btn btn-outline-secondary">
+                                <i class="bi bi-eraser me-2"></i>Очистить
+                            </button>
+                            <button type="submit" 
+                                    class="btn btn-success" 
+                                    id="submitCardButton">
+                                <i class="bi bi-save me-2"></i>Сохранить карточку
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка - Информация и превью -->
+        <div class="col-lg-6">
+            <!-- Блок превью -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-info text-white">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-eye me-2"></i>Предпросмотр
+                    </h3>
+                </div>
+                <div class="card-body" id="cardPreview">
+                    {% render_card_fields template.fields %}
+                </div>
+            </div>
+
+            <!-- Мета-информация -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="h5 mb-0">
+                        <i class="bi bi-info-circle me-2"></i>О шаблоне
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4"><i class="bi bi-person me-1"></i>Автор</dt>
+                        <dd class="col-sm-8">{{ template.creator.get_full_name }}</dd>
+
+                        <dt class="col-sm-4"><i class="bi bi-calendar me-1"></i>Создан</dt>
+                        <dd class="col-sm-8">{{ template.created_at|date:"d.m.Y H:i" }}</dd>
+
+                        <dt class="col-sm-4"><i class="bi bi-arrow-repeat me-1"></i>Обновлен</dt>
+                        <dd class="col-sm-8">{{ template.updated_at|timesince }} назад</dd>
+
+                        <dt class="col-sm-4"><i class="bi bi-files me-1"></i>Использований</dt>
+                        <dd class="col-sm-8">{{ template.instances.count }}</dd>
+
+                        <dt class="col-sm-4"><i class="bi bi-shield me-1"></i>Статус</dt>
+                        <dd class="col-sm-8">
+                            {% if template.is_public %}
+                            <span class="badge bg-success">Публичный</span>
+                            {% else %}
+                            <span class="badge bg-warning">Приватный</span>
+                            {% endif %}
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальные окна -->
+{% include 'includes/modals/delete_confirm.html' %}
+{% include 'includes/modals/export_options.html' %}
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .card-field-item {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+    }
+    .card-field-label {
+        font-weight: 500;
+        color: #666;
+    }
+    .card-field-value {
+        font-size: 1.1em;
+    }
+    #cardPreview input:disabled {
+        background: transparent;
+        border: none;
+        padding-left: 0;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Динамическое обновление превью
+    const form = document.getElementById('cardCreateForm');
+    const preview = document.getElementById('cardPreview');
+
+    function updatePreview(event) {
+        const target = event.target;
+        const fieldName = target.name;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        
+        const previewField = preview.querySelector(`[data-field="${fieldName}"]`);
+        if (previewField) {
+            if (previewField.type === 'checkbox') {
+                previewField.checked = value;
+            } else {
+                previewField.textContent = value;
+            }
+        }
+    }
+
+    if (form) {
+        form.addEventListener('input', updatePreview);
+        form.addEventListener('change', updatePreview);
+    }
+
+    // Обработка файловых полей
+    function handleFilePreview(fieldName, file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const previewImg = preview.querySelector(`#preview-${fieldName}`);
+            if (previewImg) {
+                previewImg.src = e.target.result;
+            }
+        };
+        if (file) reader.readAsDataURL(file);
+    }
+
+    form.addEventListener('change', function(e) {
+        if (e.target.type === 'file') {
+            handleFilePreview(e.target.name, e.target.files[0]);
+        }
+    });
+});
+</script>
+{% endblock %}
+
+================================================================================
+File: cards\templates\cards\template_form.html
+--------------------------------------------------------------------------------
+{% extends 'base.html' %}
+{% load form_tags %}
+{% load static %}
+
+{% block title %}{{ form.instance.pk|yesno:"Редактирование шаблона,Создание шаблона" }}{% endblock %}
+
+{% block content %}
+<div class="container-lg mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">
+                <i class="bi bi-file-earmark-richtext me-2"></i>
+                {{ form.instance.pk|yesno:"Редактировать шаблон,Новый шаблон" }}
+            </h2>
+        </div>
+        
+        <div class="card-body">
+            <form method="post" novalidate id="template-form">
+                {% csrf_token %}
+                
+                <!-- Название шаблона -->
+                <div class="mb-4">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">
+                        <i class="bi bi-card-heading me-1"></i>Название шаблона
+                    </label>
+                    {{ form.name|add_class:"form-control form-control-lg" }}
+                    {% if form.name.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.name.errors.as_text }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Описание -->
+                <div class="mb-4">
+                    <label for="id_description" class="form-label">
+                        <i class="bi bi-text-paragraph me-1"></i>Описание
+                    </label>
+                    <textarea name="description" 
+                            id="id_description" 
+                            class="form-control" 
+                            rows="3"
+                            placeholder="Добавьте описание назначения шаблона">{{ form.instance.description }}</textarea>
+                </div>
+
+                <!-- JSON-структура -->
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <label class="form-label">
+                            <i class="bi bi-code-square me-1"></i>Конструктор полей
+                        </label>
+                        <button type="button" 
+                                class="btn btn-sm btn-outline-secondary" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#jsonHelpModal">
+                            <i class="bi bi-question-circle"></i> Справка
+                        </button>
+                    </div>
+                    
+                    <div class="border rounded-3 p-3 bg-light">
+                        {{ form.fields|add_class:"form-control font-monospace" }}
+                        {% if form.fields.errors %}
+                        <div class="invalid-feedback d-block mt-2">
+                            {{ form.fields.errors.as_text }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Настройки видимости -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="form-check form-switch">
+                            {{ form.is_public|add_class:"form-check-input" }}
+                            <label class="form-check-label" for="{{ form.is_public.id_for_label }}">
+                                <i class="bi bi-globe me-1"></i>Публичный доступ
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check form-switch">
+                            {{ form.is_favorite|add_class:"form-check-input" }}
+                            <label class="form-check-label" for="{{ form.is_favorite.id_for_label }}">
+                                <i class="bi bi-star me-1"></i>В избранное
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопки управления -->
+                <div class="d-flex justify-content-between border-top pt-4">
+                    <a href="{% url 'cards:template_list' %}" 
+                       class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Назад к списку
+                    </a>
+                    <button type="submit" 
+                            class="btn btn-primary btn-lg"
+                            id="submit-button">
+                        <i class="bi bi-save me-2"></i>
+                        {{ form.instance.pk|yesno:"Сохранить изменения,Создать шаблон" }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно справки по JSON -->
+<div class="modal fade" id="jsonHelpModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title">
+                    <i class="bi bi-file-code me-2"></i>Справка по формату JSON
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <pre class="bg-dark text-white p-3 rounded">
+{
+    "field_name": {
+        "type": "text|textarea|number|select|checkbox",
+        "label": "Название поля",
+        "required": true/false,
+        "options": [
+            {"value": "opt1", "label": "Вариант 1"},
+            {"value": "opt2", "label": "Вариант 2"}
+        ],
+        "default": "значение по умолчанию"
+    }
+}</pre>
+                <p class="mt-3">Пример реального шаблона:</p>
+                <div class="alert alert-secondary">
+                    <code>
+                        {{ example_json|safe }}
+                    </code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    #template-form textarea {
+        min-height: 200px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9em;
+    }
+    .form-check-input {
+        transform: scale(1.3);
+        margin-right: 10px;
+    }
+</style>
+{% endblock %}
+
+================================================================================
+File: cards\templates\cards\template_list.html
+--------------------------------------------------------------------------------
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Список шаблонов{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">
+            <i class="bi bi-layers me-2"></i>Мои шаблоны
+        </h2>
+        <a href="{% if user.is_authenticated %}{% url 'cards:create_template' %}{% else %}{% url 'login' %}?next={% url 'cards:create_template' %}{% endif %}"
+           class="btn btn-primary"
+           id="create-template-btn">
+            <i class="bi bi-plus-circle me-2"></i>Создать шаблон
+        </a>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for template in templates %}
+        {% url 'cards:template_detail' template.pk as template_detail_url %}    
+        <div class="col">
+            <div class="card h-100 shadow-sm" data-template-id="{{ template.pk }}">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="card-title mb-0">
+                                <a href="{{ template_detail_url }}"
+                               class="text-decoration-none">
+                                {{ template.name }}
+                            </a>
+                        </h5>
+                        <button type="button"
+                                class="btn btn-sm favorite-toggle {% if template.is_favorite %}active{% endif %}"
+                                data-template-id="{{ template.pk }}"
+                                title="{% if template.is_favorite %}Убрать из избранного{% else %}Добавить в избранное{% endif %}">
+                                <i class="bi {% if template.is_favorite %}bi-star-fill{% else %}bi-star{% endif %}" aria-hidden="true"></i>
+                                <span class="visually-hidden">{% if template.is_favorite %}Убрать из избранного{% else %}Добавить в избранное{% endif %}</span>
+                        </button>
+                    </div>
+                    <div class="card-text small text-muted mb-3">
+                        {{ template.description|default:"Нет описания"|truncatechars:100 }}
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="badge bg-secondary">
+                            <i class="bi bi-clock-history me-1"></i>
+                            {{ template.updated_at|timesince }} назад
+                        </div>
+                        <div class="btn-group">
+                                <a href="{{ template_detail_url }}"
+                               class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                                    <span class="visually-hidden">Редактировать</span>
+                            </a>
+                            <button type="button" 
+                                    class="btn btn-sm btn-outline-danger"
+                                    onclick="showDeleteModal({{ template.pk }})">
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                    <span class="visually-hidden">Удалить</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <small class="text-muted">
+                        <i class="bi bi-person-circle me-1"></i>
+                        {{ template.creator.username }}
+                        <span class="ms-2">
+                            <i class="bi bi-files me-1"></i>
+                            {{ template.instances.count }}
+                        </span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle me-2"></i>
+                У вас пока нет шаблонов. Нажмите "Создать шаблон", чтобы добавить первый.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- Модальное окно удаления -->
+{% include 'includes/modals/delete_confirm.html' %}
+{% endblock %}
+{% block extra_js %}
+<!-- Подключение Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+{% endblock %}
+
+================================================================================
+File: cards\templatetags\card_render.py
+--------------------------------------------------------------------------------
+import json
+from django import template
+from django.utils.safestring import mark_safe
+from django.utils.html import escape
+
+register = template.Library()
+
+@register.simple_tag
+def render_card_fields(fields_data, form_mode=False):
+    """
+    Рендерит поля карточки из JSON-структуры
+    :param fields_data: JSON-строка или словарь
+    :param form_mode: Режим формы (True) или превью (False)
+    :return: Сгенерированный HTML
+    """
+    try:
+        # Конвертируем строку JSON в словарь при необходимости
+        if isinstance(fields_data, str):
+            fields = json.loads(fields_data)
+        else:
+            fields = fields_data
+        
+        if not isinstance(fields, dict):
+            return ''
+            
+        html = []
+        for field_name, config in fields.items():
+            html.append(render_single_field(field_name, config, form_mode))
+        
+        return mark_safe(''.join(html))  # Безопасно, так как все вставки экранированы
+    
+    except json.JSONDecodeError:
+        return mark_safe('<div class="alert alert-danger">Ошибка в формате JSON</div>')
+
+
+def render_single_field(field_name, config, form_mode):
+    """Рендерит одно поле"""
+    field_type = config.get('type', 'text')
+    label = config.get('label', field_name.capitalize())
+    required = 'required' if config.get('required', False) else ''
+    placeholder = config.get('placeholder', '')
+    classes = config.get('classes', '')
+    default_value = config.get('default', '')
+    
+    # Базовые классы стилей
+    base_classes = "form-control mb-3" if form_mode else "card-field mb-2"
+    field_id = f"field_{field_name}"
+
+    # Генерация HTML в зависимости от типа поля
+    if field_type == 'textarea':
+        return textarea_field(field_id, field_name, label, placeholder, required, classes, base_classes, default_value, form_mode)
+    
+    elif field_type == 'number':
+        return number_field(field_id, field_name, label, placeholder, required, classes, base_classes, default_value, form_mode)
+    
+    elif field_type == 'select':
+        return select_field(field_id, field_name, label, config.get('options', []), placeholder, required, classes, base_classes, default_value, form_mode)
+    
+    elif field_type == 'checkbox':
+        return checkbox_field(field_id, field_name, label, required, classes, base_classes, default_value, form_mode)
+    
+    elif field_type == 'image':  # Добавлено новое поле
+        return image_field(field_id, field_name, label, placeholder, required, classes, base_classes, default_value, form_mode)
+    
+    else:  # text по умолчанию
+        return text_field(field_id, field_name, label, placeholder, required, classes, base_classes, default_value, form_mode)
+
+
+def text_field(field_id, name, label, placeholder, required, classes, base_classes, value, form_mode):
+    """Текстовое поле"""
+    if form_mode:
+        return f'''
+        <div class="form-group {classes}">
+            <label for="{field_id}" class="form-label">{escape(label)}</label>
+            <input type="text" id="{field_id}" name="{name}" 
+                   class="{base_classes}" placeholder="{escape(placeholder)}" 
+                   value="{escape(value)}" {required}>
+        </div>
+        '''
+    else:
+        return f'''
+        <div class="card-field-item {classes}">
+            <div class="card-field-label">{escape(label)}</div>
+            <div class="card-field-value">{escape(value or placeholder)}</div>
+        </div>
+        '''
+
+
+def textarea_field(field_id, name, label, placeholder, required, classes, base_classes, value, form_mode):
+    """Многострочное текстовое поле"""
+    if form_mode:
+        return f'''
+        <div class="form-group {classes}">
+            <label for="{field_id}" class="form-label">{escape(label)}</label>
+            <textarea id="{field_id}" name="{name}" 
+                      class="{base_classes}" rows="3"
+                      placeholder="{escape(placeholder)}" {required}>{escape(value)}</textarea>
+        </div>
+        '''
+    else:
+        return f'''
+        <div class="card-field-item {classes}">
+            <div class="card-field-label">{escape(label)}</div>
+            <div class="card-field-value">{escape(value or placeholder)}</div>
+        </div>
+        '''
+
+
+def select_field(field_id, name, label, options, placeholder, required, classes, base_classes, value, form_mode):
+    """Выпадающий список"""
+    options_html = ''.join(
+        f'<option value="{escape(opt.get("value", opt))}" '
+        f'{"selected" if str(opt.get("value", opt)) == str(value) else ""}>{escape(opt.get("label", opt))}</option>'
+        for opt in options
+    )
+    
+    if form_mode:
+        return f'''
+        <div class="form-group {classes}">
+            <label for="{field_id}" class="form-label">{escape(label)}</label>
+            <select id="{field_id}" name="{name}" 
+                    class="{base_classes}" {required}>
+                <option value="">{escape(placeholder or '-- Выберите --')}</option>
+                {options_html}
+            </select>
+        </div>
+        '''
+    else:
+        selected_option = next(
+            (escape(opt.get('label', opt)) for opt in options 
+            if str(opt.get('value', opt)) == str(value)),
+            ''
+        )
+        return f'''
+        <div class="card-field-item {classes}">
+            <div class="card-field-label">{escape(label)}</div>
+            <div class="card-field-value">{selected_option}</div>
+        </div>
+        '''
+
+
+def checkbox_field(field_id, name, label, required, classes, base_classes, value, form_mode):
+    """Чекбокс"""
+    checked = 'checked' if value else ''
+    if form_mode:
+        return f'''
+        <div class="form-check {classes}">
+            <input type="checkbox" id="{field_id}" name="{name}" 
+                   class="form-check-input" {checked} {required}>
+            <label class="form-check-label" for="{field_id}">{escape(label)}</label>
+        </div>
+        '''
+    else:
+        return f'''
+        <div class="card-field-item {classes}">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" {checked} disabled>
+                <label class="form-check-label">{escape(label)}</label>
+            </div>
+        </div>
+        '''
+
+
+def number_field(field_id, name, label, placeholder, required, classes, base_classes, value, form_mode):
+    """Числовое поле"""
+    if form_mode:
+        return f'''
+        <div class="form-group {classes}">
+            <label for="{field_id}" class="form-label">{escape(label)}</label>
+            <input type="number" id="{field_id}" name="{name}" 
+                   class="{base_classes}" placeholder="{escape(placeholder)}" 
+                   value="{escape(str(value))}" {required}>
+        </div>
+        '''
+    else:
+        return f'''
+        <div class="card-field-item {classes}">
+            <div class="card-field-label">{escape(label)}</div>
+            <div class="card-field-value">{escape(str(value) or placeholder)}</div>
+        </div>
+        '''
+
+
+def image_field(field_id, name, label, placeholder, required, classes, base_classes, value, form_mode):
+    """Поле для изображения"""
+    if form_mode:
+        return f'''
+        <div class="form-group {classes}">
+            <label for="{field_id}" class="form-label">{escape(label)}</label>
+            <input type="file" id="{field_id}" name="{name}" 
+                   class="{base_classes}" accept="image/*" {required}>
+        </div>
+        '''
+    else:
+        # Предполагается, что value содержит URL изображения
+        return f'''
+        <div class="card-field-item {classes}">
+            <div class="card-field-label">{escape(label)}</div>
+            <div class="card-field-value">
+                <img src="{escape(value or placeholder)}" class="card-img">
+            </div>
+        </div>
+        '''
+
+================================================================================
+File: cards\templatetags\card_tags.py
+--------------------------------------------------------------------------------
+from django import template
+import json
+
+register = template.Library()
+
+@register.filter
+def pretty_json(value):
+    """Форматирует JSON для удобного отображения в шаблоне."""
+    return json.dumps(value, indent=4, ensure_ascii=False)
+
+================================================================================
+File: cards\templatetags\form_tags.py
+--------------------------------------------------------------------------------
+from django import template
+import json
+
+register = template.Library()
+
+@register.filter(name='add_class')
+def add_class(value, css_class):
+    return value.as_widget(attrs={"class": css_class})
+
+================================================================================
+File: cards\templatetags\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: config\asgi.py
+--------------------------------------------------------------------------------
+"""
+ASGI config for config project.
+
+It exposes the ASGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.0/howto/deployment/asgi/
+"""
+
+import os
+
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+
+application = get_asgi_application()
+
+
+================================================================================
+File: config\settings.py
+--------------------------------------------------------------------------------
+"""
+Django settings for config project.
+
+Generated by 'django-admin startproject' using Django 5.0.13.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.0/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/5.0/ref/settings/
+"""
+import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+# Загружаем данные из .env
+load_dotenv()
+USER = os.getenv("MS_SQL_LOGIN")
+PASSWORD = os.getenv("MS_SQL_PASS")
+HOST = os.getenv("MS_SQL_SERVER")
+DATABASE = os.getenv("MS_SQL_DB")
+PAD_DATABASE = os.getenv("MS_SQL_DB_FIRST_CONNECT")
+DRIVER = os.getenv("MS_SQL_DRIVER")
+SECRET_KEY = os.getenv("SECRET_KEY") # SECURITY WARNING: keep the secret key used in production secret!
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'users',
+    'cards',
+    'export',  
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'users.middleware.RoleMiddleware',
+]
+
+ROOT_URLCONF = 'config.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # Путь к глобальным шаблонам
+        'APP_DIRS': True, # Искать шаблоны в папке templates/ каждого приложения
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'config.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': DATABASE,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST,
+        'PORT': '',
+        'OPTIONS': {
+            'driver': DRIVER
+        }
+    }
+}
+
+# Password validation
+# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/5.0/topics/i18n/
+
+LANGUAGE_CODE = 'ru-ru'
+
+TIME_ZONE = 'Europe/Moscow'
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Папка с общими статическими файлами
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Для collectstatic
+
+# Media files (загруженные пользователями)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = 'home'  # После входа перенаправлять на главную
+LOGOUT_REDIRECT_URL = 'home'  # После выхода перенаправлять на главную
+
+
+""" 
+#требуется  доработка
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.com' #Поменять на свой
+EMAIL_PORT = 465 #Поменять на свой
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER") #добавить в .env логин от почты
+EMAIL_HOST_PASSWORD = os.getenv('YANDEX_PASSWORD_APP') #добавить в .env пароль от почты
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+EMAIL_SERVER = EMAIL_HOST_USER 
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+"""
+
+================================================================================
+File: config\urls.py
+--------------------------------------------------------------------------------
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('cards/', include('cards.urls', namespace='cards')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+================================================================================
+File: config\wsgi.py
+--------------------------------------------------------------------------------
+"""
+WSGI config for config project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+
+application = get_wsgi_application()
+
+
+================================================================================
+File: config\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: export\admin.py
+--------------------------------------------------------------------------------
+from django.contrib import admin
+
+# Register your models here.
+
+
+================================================================================
+File: export\apps.py
+--------------------------------------------------------------------------------
+from django.apps import AppConfig
+
+
+class ExportConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'export'
+
+
+================================================================================
+File: export\models.py
+--------------------------------------------------------------------------------
+from django.db import models
+
+# Create your models here.
+
+
+================================================================================
+File: export\tests.py
+--------------------------------------------------------------------------------
+from django.test import TestCase
+
+# Create your tests here.
+
+
+================================================================================
+File: export\views.py
+--------------------------------------------------------------------------------
+from django.shortcuts import render
+
+# Create your views here.
+
+
+================================================================================
+File: export\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: export\migrations\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: migrations\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: static\css\styles.css
+--------------------------------------------------------------------------------
+/* === Общие стили === */
+body {
+    background-color: #f8f9fa; /* светлый серый фон */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: #343a40; /* тёмный текст */
+}
+
+/* === Заголовок === */
+#page-title {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* === Навигация === */
+#main-nav a {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+#main-nav a:hover {
+    color: #ffc107; /* жёлтый акцент при наведении */
+}
+
+/* === Карточки на главной === */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.75rem;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+.btn i {
+    vertical-align: middle;
+}
+
+/* === Подвал === */
+#footer {
+    font-size: 0.875rem;
+}
+
+/* === Кнопка в разработке === */
+#card-table-btn.disabled {
+    pointer-events: none;
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Стили для ролей */
+.role-badges .badge {
+    font-size: 0.9rem;
+    padding: 0.35em 0.65em;
+}
+
+/* Адаптивные карточки */
+@media (max-width: 768px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+/* Анимации */
+.card {
+    transition: all 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Специфичные стили для разных ролей */
+body.role-guest {
+    background-color: #f8f9fa;
+}
+body.role-creator {
+    background-color: #f0fff4;
+}
+body.role-admin {
+    background-color: #fff0f0;
+}
+
+================================================================================
+File: templates\base.html
+--------------------------------------------------------------------------------
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Мой проект{% endblock %}</title>
+    <!-- Предустановка соединения с CDN для ускорения загрузки -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <!-- Можно добавить SRI (если известны значения хеша) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="role-{{ user_role|lower }}">
+    {% include 'includes/role_badges.html' %}
+    
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-4">
+        <a class="navbar-brand" href="/">🏠 Главная</a>
+        <div class="ms-auto">
+            <!-- Переключатель темы -->
+            <button id="themeToggle" class="btn btn-outline-secondary" title="Сменить тему">
+                <i id="themeIcon" class="bi bi-moon-fill"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Перемещены модальные окна вниз для оптимизации рендеринга страницы -->
+    {% include 'includes/modals/delete_confirm.html' %}
+    {% include 'includes/modals/export_options.html' %}
+    
+    <!-- Подключение JS Bootstrap с атрибутом defer для ненужной блокировки рендеринга -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Подключение собственных скриптов -->
+    <script defer src="{% static 'js/scripts.js' %}"></script>
+    
+    <!-- Переключатель темы -->
+    <script defer>
+        // Выполняем скрипт после загрузки страницы
+        document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const root = document.documentElement;
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        root.setAttribute('data-bs-theme', storedTheme);
+        themeIcon.className = storedTheme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+        toggleButton.addEventListener('click', () => {
+            const current = root.getAttribute('data-bs-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-bs-theme', next);
+            localStorage.setItem('theme', next);
+            themeIcon.className = next === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+        });
+        });
+    </script>
+</body>
+</html>
+
+
+================================================================================
+File: templates\home.html
+--------------------------------------------------------------------------------
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница сервиса</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <header class="bg-dark text-white py-3 mb-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h3 mb-0" id="page-title">
+                <i class="bi bi-card-list me-2"></i> Конструктор карточных игр
+            </h1>
+            <nav id="main-nav">
+                <a href="{% url 'cards:template_list' %}" class="text-white text-decoration-none me-3">
+                    <i class="bi bi-layers"></i> Шаблоны
+                </a>
+                <a href="/admin/" class="text-white text-decoration-none">
+                    <i class="bi bi-person-gear"></i> Админка
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">
+        <div class="row justify-content-center">
+
+            <!-- Карточка 1: Шаблоны -->
+            <div class="col-md-5 mb-4">
+                <div class="card shadow-sm h-100" id="card-templates">
+                    <div class="card-body">
+                        <h5 class="card-title" id="card-templates-title">
+                            <i class="bi bi-layers-fill text-primary me-2"></i>
+                            Шаблоны карточек
+                        </h5>
+                        <p class="card-text" id="card-templates-desc">
+                            Управляйте шаблонами карточек, добавляйте изображения, описание и логику.
+                        </p>
+                        <a href="{% url 'cards:template_list' %}" class="btn btn-primary" id="card-templates-btn">
+                            Перейти <i class="bi bi-arrow-right-short ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Табличные данные -->
+            <div class="col-md-5 mb-4">
+                <div class="card shadow-sm h-100" id="card-table-data">
+                    <div class="card-body">
+                        <h5 class="card-title" id="card-table-title">
+                            <i class="bi bi-table text-secondary me-2"></i>
+                            Табличные данные
+                        </h5>
+                        <p class="card-text" id="card-table-desc">
+                            Просматривайте и редактируйте таблицы с данными для генерации карточек.
+                        </p>
+                        <a href="#" class="btn btn-secondary disabled" id="card-table-btn">
+                            В разработке <i class="bi bi-wrench-adjustable ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-light text-center text-muted py-3 mt-4" id="footer">
+        <div class="container">
+            &copy; {{ year|default:2025 }} Конструктор карточных игр. Все права защищены.
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+================================================================================
+File: templates\includes\role_badges.html
+--------------------------------------------------------------------------------
+{% load static %}
+
+<div class="role-badges mb-3">
+    {% if user_role == 'ADMIN' %}
+    <span class="badge bg-danger">
+        <i class="bi bi-shield-lock"></i> Администратор
+    </span>
+    {% elif user_role == 'CREATOR' %}
+    <span class="badge bg-success">
+        <i class="bi bi-pencil-square"></i> Создатель
+    </span>
+    {% elif user_role == 'MODERATOR' %}
+    <span class="badge bg-primary">
+        <i class="bi bi-eye"></i> Модератор
+    </span>
+    {% elif user_role == 'EDITOR' %}
+    <span class="badge bg-info text-dark">
+        <i class="bi bi-pencil"></i> Редактор
+    </span>
+    {% elif user_role == 'USER' %}
+    <span class="badge bg-secondary">
+        <i class="bi bi-person"></i> Пользователь
+    </span>
+    {% else %}
+    <span class="badge bg-light text-dark">
+        <i class="bi bi-person-x"></i> Гость
+    </span>
+    {% endif %}
+</div>
+
+================================================================================
+File: templates\includes\modals\delete_confirm.html
+--------------------------------------------------------------------------------
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="deleteForm" method="post">
+          {% csrf_token %}
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title">
+              <i class="bi bi-exclamation-triangle me-2"></i>Подтверждение удаления
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+                    <p>{{ delete_message|default:"Вы уверены, что хотите удалить этот элемент? Это действие необратимо." }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash me-2"></i>Удалить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+================================================================================
+File: templates\includes\modals\export_options.html
+--------------------------------------------------------------------------------
+<div class="modal fade" id="exportModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">
+            <i class="bi bi-download me-2"></i>Экспорт данных
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="bi bi-filetype-pdf me-2"></i>PDF
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="bi bi-filetype-csv me-2"></i>CSV
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="bi bi-filetype-json me-2"></i>JSON
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+================================================================================
+File: templates\registration\login.html
+--------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Вход в систему</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+    </div>
+</body>
+</html>
+
+================================================================================
+File: users\admin.py
+--------------------------------------------------------------------------------
+from django.contrib import admin # type: ignore
+# Register your models here.
+from users.models import User
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('last_name', 'first_name', 'pk')
+    list_filter = ('last_name',)
+
+
+================================================================================
+File: users\apps.py
+--------------------------------------------------------------------------------
+from django.apps import AppConfig
+
+
+class UsersConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'users'
+
+
+================================================================================
+File: users\middleware.py
+--------------------------------------------------------------------------------
+class RoleMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        # Устанавливаем роль только для аутентифицированных пользователей
+        if request.user.is_authenticated:
+            request.user_role = request.user.role
+        else:
+            # Для неаутентифицированных пользователей роль не устанавливается
+            request.user_role = None
+
+        response = self.get_response(request)
+        return response
+
+================================================================================
+File: users\models.py
+--------------------------------------------------------------------------------
+# users/models.py
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
+from django.db.models import F
+
+class User(AbstractUser):
+    # Убираем username, используем email как идентификатор
+    username = None
+    email = models.EmailField(
+        unique=True,
+        verbose_name='Email',
+        help_text='Будет использоваться для входа в систему'
+    )
+
+    # Контактные данные
+    phone = models.CharField(
+        max_length=35,
+        verbose_name='Телефон',
+        blank=True,
+        null=True,
+        help_text='Формат: +79991234567'
+    )
+    telegram = models.CharField(
+        max_length=150,
+        verbose_name='Telegram',
+        blank=True,
+        null=True,
+        help_text='Без @, например: username'
+    )
+
+    # Личные данные
+    first_name = models.CharField(
+        max_length=100,
+        verbose_name='Имя',
+        blank=True,
+        null=True
+    )
+    last_name = models.CharField(
+        max_length=100,
+        verbose_name='Фамилия',
+        blank=True,
+        null=True
+    )
+    third_name = models.CharField(
+        max_length=100,
+        verbose_name='Отчество',
+        blank=True,
+        null=True
+    )
+
+    # Визуальные настройки
+    avatar = models.ImageField(
+        upload_to='users/avatars/%Y/%m/',
+        verbose_name='Аватар',
+        blank=True,
+        null=True,
+        help_text='Рекомендуемый размер: 200x200 px'
+    )
+
+    # Статусы
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name='Активный',
+        help_text='Отключенные пользователи не могут войти в систему'
+    )
+
+    # Роли пользователей
+    class Role(models.TextChoices):
+        USER = 'USER', 'Пользователь'
+        CREATOR = 'CREATOR', 'Создатель'
+        EDITOR = 'EDITOR', 'Редактор'
+        MODERATOR = 'MODERATOR', 'Модератор'
+        ADMIN = 'ADMIN', 'Администратор'
+
+    role = models.CharField(
+        max_length=10,
+        choices=Role.choices,
+        default=Role.USER,
+        verbose_name='Роль',
+        help_text='Определяет права пользователя в системе'
+    )
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']  # Убрано 'username'
+
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+        ordering = ['-date_joined']
+        permissions = [
+            ("can_export_pdf", "Может экспортировать в PDF"),
+            ("can_export_json", "Может экспортировать в JSON"),
+            ("manage_private_templates", "Доступ к приватным шаблонам"),
+            ("moderate_content", "Может модерировать контент"),
+            ("invite_editors", "Может приглашать редакторов"),
+        ]
+
+    def __str__(self):
+        return f'{self.email} ({self.role})'
+
+    def clean(self):
+        """Валидация данных перед сохранением"""
+        super().clean()
+
+        # Проверка email
+        if self.email:
+            self.email = self.email.lower().strip()
+
+        # Проверка Telegram
+        if self.telegram and self.telegram.startswith('@'):
+            self.telegram = self.telegram[1:]
+
+        # Проверка телефона
+        if self.phone and not self.phone.startswith('+'):
+            raise ValidationError("Телефон должен начинаться с '+', например: +79991234567")
+
+    def save(self, *args, **kwargs):
+        """Автоматическое назначение ролей и обработка перед сохранением"""
+        # Суперпользователь всегда администратор
+        if self.is_superuser:
+            self.role = self.Role.ADMIN
+        # Статья администратора
+        elif self.is_staff and self.role not in (self.Role.ADMIN, self.Role.MODERATOR):
+            self.role = self.Role.MODERATOR
+        # Новые пользователи по умолчанию - пользователи
+        elif not self.pk:
+            self.role = self.Role.USER
+
+        super().save(*args, **kwargs)
+
+    @property
+    def is_guest(self):
+        """Проверка, является ли пользователь гостем (анонимным)"""
+        return not self.is_authenticated
+
+    @property
+    def is_creator(self):
+        """Проверка, является ли пользователь создателем или администратором"""
+        return self.role in (self.Role.CREATOR, self.Role.ADMIN)
+
+    @property
+    def can_moderate(self):
+        """Проверка, может ли пользователь модерировать контент"""
+        return self.role in (self.Role.MODERATOR, self.Role.ADMIN)
+
+    @classmethod
+    def get_default_role(cls):
+        """Возвращает роль по умолчанию"""
+        return cls.Role.USER
+
+================================================================================
+File: users\services.py
+--------------------------------------------------------------------------------
+from django.conf import settings
+from django.core.mail import send_mail
+
+def send_register_email(email):
+    send_mail(
+        subject="Поздравляем с регистрацией на нашем сервисе",
+        message="Вы успешно зарегистрировались на платформе PlayCards Lab",
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[email]
+    )
+
+def send_new_password(email, new_password):
+    send_mail(
+        subject="Вы успешно изменили пароль",
+        message=f"Ваш новый пароль: {new_password}",
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[email]
+    )
+
+================================================================================
+File: users\signals.py
+--------------------------------------------------------------------------------
+# users/signals.py
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
+import logging
+
+from .models import User
+
+logger = logging.getLogger(__name__)
+
+@receiver(post_save, sender=User)
+def assign_permissions_on_save(sender, instance, created, **kwargs):
+    """
+    Автоматически присваивает разрешения пользователям на основе их роли.
+    Срабатывает при создании или обновлении пользователя.
+    
+    Параметры:
+        sender (Model): Модель, которая отправила сигнал (User).
+        instance (User): Экземпляр модели, который был сохранён.
+        created (bool): Флаг, указывающий, был ли объект создан (True) или обновлён (False).
+        **kwargs: Дополнительные аргументы.
+    """
+    # Игнорируем суперпользователей и анонимов
+    if instance.is_superuser or not instance.is_authenticated:
+        return
+
+    # Проверка, нужно ли обновлять разрешения
+    # Если объект создан, или если роль изменилась
+    if created or (not created and instance.pk):
+        try:
+            # Получаем текущие разрешения пользователя
+            current_permissions = set(instance.user_permissions.values_list('codename', flat=True))
+
+            # Определяем разрешения на основе роли
+            role_permissions = {
+                User.Role.CREATOR: ['can_export_pdf', "can_export_json", 'manage_private_templates', 'invite_editors'],
+                User.Role.EDITOR: ['manage_private_templates', "can_export_json"],
+                User.Role.MODERATOR: ['can_export_pdf', "can_export_json", 'moderate_content'],
+                User.Role.ADMIN: ['can_export_pdf', "can_export_json", 'manage_private_templates', 'moderate_content', 'invite_editors'],
+                User.Role.USER: ['view_public_templates'],  # Базовое разрешение для просмотра публичных шаблонов
+            }
+
+            # Получаем разрешения для текущей роли
+            required_permissions = role_permissions.get(instance.role, [])
+
+            # Получаем контент-тип для модели User
+            content_type = ContentType.objects.get_for_model(User)
+
+            # Получаем все разрешения, связанные с этой моделью
+            all_permissions = Permission.objects.filter(content_type=content_type)
+
+            # Фильтруем только те разрешения, которые нужны для текущей роли
+            needed_permissions = [
+                perm for perm in all_permissions
+                if perm.codename in required_permissions
+            ]
+
+            # Определяем, какие разрешения нужно добавить
+            new_permissions = [
+                perm for perm in needed_permissions
+                if perm.codename not in current_permissions
+            ]
+
+            # Добавляем новые разрешения
+            if new_permissions:
+                instance.user_permissions.add(*new_permissions)
+                instance.save(update_fields=['user_permissions'])
+                logger.info(f"User {instance.email} received new permissions: {[perm.codename for perm in new_permissions]}")
+
+        except ObjectDoesNotExist as e:
+            logger.error(f"Ошибка при получении контент-типа или разрешений: {e}")
+        except Exception as e:
+            logger.error(f"Неожиданная ошибка в обработчике сигналов: {e}")
+
+================================================================================
+File: users\tests.py
+--------------------------------------------------------------------------------
+from django.test import TestCase
+
+# Create your tests here.
+
+
+================================================================================
+File: users\views.py
+--------------------------------------------------------------------------------
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.views.generic import TemplateView
+from cards.models import CardTemplate
+from django.db.models import Count
+from .models import User
+
+
+class RoleRequiredMixin(UserPassesTestMixin):
+    """
+    Mixin для ограничения доступа на основе роли пользователя.
+    Должен использоваться с roles_required = [User.Role.ROLE_NAME].
+    """
+    roles_required = []
+
+    def test_func(self):
+        """
+        Проверяет, что пользователь имеет одну из требуемых ролей.
+        """
+        user = self.request.user  # Используем self.request, так как UserPassesTestMixin поддерживает это
+        if not user.is_authenticated:
+            return False
+        return user.role in self.roles_required
+
+
+class HomeView(TemplateView):
+    """
+    Главная страница с контекстом для отображения шаблонов и информации о пользователе.
+    """
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        # Добавляем данные для разных ролей
+        if user.is_authenticated:
+            # Используем роль из middleware (request.user_role)
+            user_role = getattr(user, 'role', None)
+            if user_role in [User.Role.CREATOR, User.Role.ADMIN]:
+                context['user_templates'] = CardTemplate.objects.filter(
+                    creator=user).order_by('-created_at')[:5]
+
+        # Популярные шаблоны (используем аннотацию для лайков)
+        context['popular_templates'] = CardTemplate.objects.filter(
+            is_public=True
+        ).annotate(
+            # Используем related_name 'cards' из CardInstance
+            num_cards=Count('cards')
+        ).order_by('-num_cards')[:5]
+
+        # Добавляем роль пользователя в контекст
+        context['user_role'] = user.role if user.is_authenticated else None
+
+        return context
+
+
+================================================================================
+File: users\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: users\management\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: users\management\commands\ccdb.py
+--------------------------------------------------------------------------------
+from django.core.management.base import BaseCommand
+import pyodbc
+from config.settings import USER, PASSWORD, HOST, DRIVER, PAD_DATABASE, DATABASE
+
+
+class Command(BaseCommand):
+    help = 'Создает базу данных, если она не существует'
+
+    def handle(self, *args, **options):
+        # Формируем строку подключения
+        ConnectionString = f'''DRIVER={DRIVER};
+            SERVER={HOST};
+            DATABASE={PAD_DATABASE};
+            UID={USER};
+            PWD={PASSWORD}'''
+
+        try:
+            # Устанавливаем соединение с сервером
+            conn = pyodbc.connect(ConnectionString)
+            conn.autocommit = True
+
+            # Пытаемся создать базу данных
+            conn.execute(fr'CREATE DATABASE {DATABASE};')
+
+            # Закрываем соединение
+            conn.close()
+
+            self.stdout.write(self.style.SUCCESS(f'База данных {DATABASE} успешно создана'))
+        except pyodbc.ProgrammingError as ex:
+            # Обработка ошибки, например, если база данных уже существует
+            self.stdout.write(self.style.ERROR(f'Ошибка при создании базы данных: {ex}'))
+        except Exception as ex:
+            # Обработка других ошибок
+            self.stdout.write(self.style.ERROR(f'Произошла ошибка: {ex}'))
+
+
+================================================================================
+File: users\management\commands\ccsu.py
+--------------------------------------------------------------------------------
+from django.core.management import BaseCommand # type: ignore
+from users.models import User
+
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        admin_user = User.objects.create(
+            email='admin@web.top',
+            first_name='Admin',
+            last_name='Adminov',
+            is_staff=True,
+            is_superuser=True,
+            is_active=True,
+        )
+        
+        admin_user.set_password('qwerty')
+        admin_user.save()
+        print('Admin Created')
+
+================================================================================
+File: users\management\commands\__init__.py
+--------------------------------------------------------------------------------
+
+
+================================================================================
+File: users\migrations\0001_initial.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-03-30 10:17
+
+import django.contrib.auth.models # type: ignore
+import django.utils.timezone # type: ignore
+from django.db import migrations, models # type: ignore
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+        ('auth', '0012_alter_user_first_name_max_length'),
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('password', models.CharField(max_length=128, verbose_name='password')),
+                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
+                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
+                ('first_name', models.CharField(blank=True, max_length=150, verbose_name='first name')),
+                ('last_name', models.CharField(blank=True, max_length=150, verbose_name='last name')),
+                ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
+                ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
+                ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
+                ('email', models.EmailField(max_length=254, unique=True, verbose_name='email')),
+                ('phone', models.CharField(blank=True, max_length=35, null=True, verbose_name='phone number')),
+                ('telegram', models.CharField(blank=True, max_length=150, null=True, verbose_name='telegram username')),
+                ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
+                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.permission', verbose_name='user permissions')),
+            ],
+            options={
+                'verbose_name': 'User',
+                'verbose_name_plural': 'Users',
+                'ordering': ['id'],
+            },
+            managers=[
+                ('objects', django.contrib.auth.models.UserManager()),
+            ],
+        ),
+    ]
+
+
+================================================================================
+File: users\migrations\0002_alter_user_is_active.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-03-30 14:11
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('users', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name='user',
+            name='is_active',
+            field=models.BooleanField(default=True, verbose_name='active'),
+        ),
+    ]
+
+
+================================================================================
+File: users\migrations\0003_alter_user_options_user_avatar_user_role_and_more.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-04-18 22:17
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('users', '0002_alter_user_is_active'),
+    ]
+
+    operations = [
+        migrations.AlterModelOptions(
+            name='user',
+            options={'ordering': ['id'], 'permissions': [('can_export_pdf', 'Может экспортировать в PDF'), ('manage_private_templates', 'Доступ к приватным шаблонам')], 'verbose_name': 'Пользователь', 'verbose_name_plural': 'Пользователи'},
+        ),
+        migrations.AddField(
+            model_name='user',
+            name='avatar',
+            field=models.ImageField(blank=True, null=True, upload_to='users/avatars/'),
+        ),
+        migrations.AddField(
+            model_name='user',
+            name='role',
+            field=models.CharField(choices=[('GUEST', 'Гость'), ('USER', 'Пользователь'), ('CREATOR', 'Создатель'), ('EDITOR', 'Редактор'), ('MODERATOR', 'Модератор'), ('ADMIN', 'Администратор')], default='USER', max_length=10, verbose_name='Роль'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='email',
+            field=models.EmailField(max_length=254, unique=True, verbose_name='Email'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='is_active',
+            field=models.BooleanField(default=True, verbose_name='Активный'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='phone',
+            field=models.CharField(blank=True, max_length=35, null=True, verbose_name='Телефон'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='telegram',
+            field=models.CharField(blank=True, max_length=150, null=True, verbose_name='Telegram'),
+        ),
+    ]
+
+
+================================================================================
+File: users\migrations\0004_alter_user_options_alter_user_avatar_and_more.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-04-18 23:27
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('users', '0003_alter_user_options_user_avatar_user_role_and_more'),
+    ]
+
+    operations = [
+        migrations.AlterModelOptions(
+            name='user',
+            options={'ordering': ['-date_joined'], 'permissions': [('can_export_pdf', 'Может экспортировать в PDF'), ('manage_private_templates', 'Доступ к приватным шаблонам'), ('moderate_content', 'Может модерировать контент'), ('invite_editors', 'Может приглашать редакторов')], 'verbose_name': 'Пользователь', 'verbose_name_plural': 'Пользователи'},
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='avatar',
+            field=models.ImageField(blank=True, help_text='Рекомендуемый размер: 200x200 px', null=True, upload_to='users/avatars/%Y/%m/', verbose_name='Аватар'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='email',
+            field=models.EmailField(help_text='Будет использоваться для входа в систему', max_length=254, unique=True, verbose_name='Email'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='is_active',
+            field=models.BooleanField(default=True, help_text='Отключенные пользователи не могут войти в систему', verbose_name='Активный'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='phone',
+            field=models.CharField(blank=True, help_text='Формат: +79991234567', max_length=35, null=True, verbose_name='Телефон'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='role',
+            field=models.CharField(choices=[('GUEST', 'Гость'), ('USER', 'Пользователь'), ('CREATOR', 'Создатель'), ('EDITOR', 'Редактор'), ('MODERATOR', 'Модератор'), ('ADMIN', 'Администратор')], default='USER', help_text='Определяет права пользователя в системе', max_length=10, verbose_name='Роль'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='telegram',
+            field=models.CharField(blank=True, help_text='Без @, например: username', max_length=150, null=True, verbose_name='Telegram'),
+        ),
+    ]
+
+
+================================================================================
+File: users\migrations\0005_user_third_name_alter_user_first_name_and_more.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-07-01 17:37
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('users', '0004_alter_user_options_alter_user_avatar_and_more'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='user',
+            name='third_name',
+            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='Отчество'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='first_name',
+            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='Имя'),
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='last_name',
+            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='Фамилия'),
+        ),
+    ]
+
+
+================================================================================
+File: users\migrations\0006_alter_user_options_alter_user_role.py
+--------------------------------------------------------------------------------
+# Generated by Django 5.0.13 on 2025-07-02 14:33
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('users', '0005_user_third_name_alter_user_first_name_and_more'),
+    ]
+
+    operations = [
+        migrations.AlterModelOptions(
+            name='user',
+            options={'ordering': ['-date_joined'], 'permissions': [('can_export_pdf', 'Может экспортировать в PDF'), ('can_export_json', 'Может экспортировать в JSON'), ('manage_private_templates', 'Доступ к приватным шаблонам'), ('moderate_content', 'Может модерировать контент'), ('invite_editors', 'Может приглашать редакторов')], 'verbose_name': 'Пользователь', 'verbose_name_plural': 'Пользователи'},
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='role',
+            field=models.CharField(choices=[('USER', 'Пользователь'), ('CREATOR', 'Создатель'), ('EDITOR', 'Редактор'), ('MODERATOR', 'Модератор'), ('ADMIN', 'Администратор')], default='USER', help_text='Определяет права пользователя в системе', max_length=10, verbose_name='Роль'),
+        ),
+    ]
+
+
+================================================================================
+File: users\migrations\__init__.py
+--------------------------------------------------------------------------------
+
+

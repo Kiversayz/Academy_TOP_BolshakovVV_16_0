@@ -129,27 +129,21 @@ class CardTemplate(models.Model):
     description = models.TextField(
         verbose_name=_("Описание"),
         blank=True,
-        help_text=_("Подробное описание шаблона")
+        help_text=_("Краткое описание шаблона")
     )
     
     is_favorite = models.BooleanField(
         default=False,
         verbose_name=_("Избранное"),
-        help_text=_("Помечен ли шаблон как избранный")
-    )
-    
-    is_active = models.BooleanField(
-        default=True,
-        verbose_name=_("Активный"),
-        help_text=_("Активен ли шаблон (мягкое удаление)")
+        help_text=_("Пометить шаблон как избранное")
     )
     
     editors = models.ManyToManyField(
         User,
         related_name="editable_templates",
-        verbose_name=_("Редакторы"),
         blank=True,
-        help_text=_("Пользователи с правами редактирования")
+        verbose_name=_("Редакторы"),
+        help_text=_("Пользователи, имеющие право редактировать шаблон")
     )
     
     created_at = models.DateTimeField(
@@ -161,20 +155,21 @@ class CardTemplate(models.Model):
         auto_now=True,
         verbose_name=_("Дата обновления")
     )
-    
-    version = models.PositiveIntegerField(
-        default=1,
-        verbose_name="Версия",
-        help_text="Текущая версия шаблона"
-    )
 
     class Meta:
         verbose_name = _("Шаблон карточки")
         verbose_name_plural = _("Шаблоны карточек")
+        permissions = [
+            ("can_export_pdf", "Можно экспортировать в PDF"),
+            ("can_export_json", "Можно экспортировать в JSON"),
+            ("can_change_template", "Можно изменить шаблон"),
+            ("can_delete_template", "Можно удалить шаблон"),
+            ("view_public_templates", "Можно просматривать публичные шаблоны"),
+        ]
         ordering = ["-created_at"]
         indexes = [
             models.Index(fields=["name"]),
-            models.Index(fields=["is_public", "is_active"]),
+            models.Index(fields=["is_public", "is_favorite"]),
         ]
         constraints = [
             models.UniqueConstraint(
@@ -256,6 +251,12 @@ class CardInstance(models.Model):
     class Meta:
         verbose_name = _("Экземпляр карточки")
         verbose_name_plural = _("Экземпляры карточек")
+        permissions = [
+        ("can_export_pdf", "Можно экспортировать в PDF"),
+        ("can_export_json", "Можно экспортировать в JSON"),
+        ("moderate_content", "Может модерировать контент"),
+        ("view_public_templates", "Может просматривать публичные шаблоны"),
+        ]
         ordering = ["-created_at"]
         indexes = [
             models.Index(fields=["template", "created_at"]),
@@ -263,7 +264,7 @@ class CardInstance(models.Model):
 
     def __str__(self) -> str:
         return f"Карточка {self.id} (Шаблон: {self.template_id})"
-    
+        
     def clean(self) -> None:
         """Валидация данных карточки согласно шаблону."""
         super().clean()

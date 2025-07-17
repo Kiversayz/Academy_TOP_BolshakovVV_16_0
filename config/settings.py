@@ -21,6 +21,7 @@ HOST = os.getenv("MS_SQL_SERVER")
 DATABASE = os.getenv("MS_SQL_DB")
 PAD_DATABASE = os.getenv("MS_SQL_DB_FIRST_CONNECT")
 DRIVER = os.getenv("MS_SQL_DRIVER")
+SECRET_KEY = os.getenv("SECRET_KEY") # SECURITY WARNING: keep the secret key used in production secret!
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +29,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)jne7hc5b5h1)(u%!cmy7n)_e19tubw(=!xpz%_+zt5kiq8plu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
